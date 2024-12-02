@@ -1,0 +1,9 @@
+.order{
+    display: flex;
+}
+
+.order-head{
+    display: grid;
+    grid-template-columns: 150px 150px 200px;
+}
+

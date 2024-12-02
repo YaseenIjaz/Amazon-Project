@@ -1,0 +1,181 @@
+@import url('https://fonts.cdnfonts.com/css/amazon-ember');
+
+body{
+    margin: 0;
+    font-family: 'Amazon Ember', sans-serif;
+}
+
+.header{
+    display: flex;
+    background-color: rgb(19, 25, 33);
+    color: white;
+    align-items: center;
+    padding: 0 15px;
+    gap: 10px;
+    border-radius: 5px 0;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 60px;
+}
+
+.amazon-header-left-section {
+    width: 180px;
+  }
+
+@media (max-width:800px){
+    .amazon-header-left-section{
+        width: unset;
+    }
+}
+
+
+.header-link{
+    display: inline-block;
+    padding: 6px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.header-link:hover{
+    border: 1px solid white;
+}
+
+.amazon-logo{
+    width: 100px;
+    margin-top: 5px;
+}
+
+.amazon-mobile-logo{
+    display: none;
+}
+
+@media screen and (max-width:575px) {
+    .amazon-logo{
+        display: none;
+    }
+
+    .amazon-mobile-logo{
+        display: block;
+        width: 35px;
+        margin-top: 10px;
+    }
+}
+
+.header-middle-section{
+    display: flex;
+    flex: 1;
+    max-width: 850px;
+    border-radius: 10px;
+    align-items: center;
+
+}
+
+.header-middle-section:focus-within{
+    border: 3.6px solid rgb(240, 136, 4);
+}
+
+.search-bar{
+    flex: 1;
+    
+    height: 38px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    text-indent: 15px;
+    font-size: 15px;
+}
+
+.search-bar:focus{
+    outline: none;
+}
+
+
+.search-button{
+    width: 45px;
+    height: 40px;
+    border: none;
+    padding: 6px;
+    background-color: rgb(254, 189, 105);
+    border-radius: 0 5px 5px 0;
+}
+
+.search-button img{
+    width: 22px;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
+.header-right-section{
+    width: 180px;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: end;
+    margin-left: 10px;
+    
+    
+
+}
+.orders-link{
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    
+    align-items: center;
+    margin-top: 3px;
+    
+}
+
+.orders-link:hover{
+    border: 1px solid white;
+}
+
+.returns-text{
+    display: block;
+    font-size: 13px;
+}
+
+.orders-text{
+    display: block;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cart-links{
+    color: white;
+    text-decoration: none;
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0);
+    position: relative;
+}
+
+.cart-links:hover{
+    border: 1px solid white;
+}
+
+.cart-icon{
+    width: 50px;
+}
+
+.cart-quantity{
+    position: absolute;
+    font-weight: bold;
+    font-size: 18px;
+    left: 24px;
+    top: 5px;
+    width: 26px;
+
+    text-align: center;
+    color: rgb(240, 136, 4);
+}
+
+.cart-text{
+    font-weight: bold;
+    margin-top: 12px;
+}

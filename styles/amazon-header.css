@@ -19,6 +19,7 @@ body{
     right: 0;
     left: 0;
     height: 60px;
+    z-index: 99;
 }
 
 .amazon-header-left-section {
@@ -131,6 +132,8 @@ body{
 
 .orders-link:hover{
     border: 1px solid white;
+    text-decoration: none;
+    color: white;
 }
 
 .returns-text{
@@ -157,6 +160,8 @@ body{
 
 .cart-links:hover{
     border: 1px solid white;
+    text-decoration: none;
+    color: white;
 }
 
 .cart-icon{

@@ -11,7 +11,7 @@ products.forEach((product) => {
                     ${product.name}
                 </div>
                 <div class="rating-review">
-                    <img src="/images/images/ratings/rating-${product.rating.stars*10}.png" class="rating">
+                    <img src="images/images/ratings/rating-${product.rating.stars*10}.png" class="rating">
                     <span class="reviews">${product.rating.count}</span>
                 </div>
                 
@@ -32,7 +32,7 @@ products.forEach((product) => {
                 </select>
 
                 <div class="item-added js-added-to-cart-${product.id}">
-                    <img src="/images/images/icons/checkmark.png">
+                    <img src="images/images/icons/checkmark.png">
 
                     Added to Cart
                 </div>
@@ -82,7 +82,7 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
             clearTimeout(previousTimeout)
         }
 
-        const timeoutId = setTimeout(() =>{
+        const timeoutId = setTimeout(() =>{ 
             addedMsg.classList.remove('added-to-cart-visible')
         },2000)
 

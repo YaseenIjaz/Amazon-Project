@@ -17,7 +17,7 @@ products.forEach((product) => {
                 
                 <div class="price">₹${Number(product.price)}</div>
                 <select name="quantity" class="quantity 
-                js-quantity-selector"
+                js-quantity-selector-${product.id}"
                 >
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -48,5 +48,28 @@ products.forEach((product) => {
 
 document.querySelector('.product-grid').innerHTML = productHTML;
 
+document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
+    button.addEventListener('click',() =>{
+        const productId = button.dataset.productId;
+        let quantity = document.querySelector(`.js-quantity-selector-${productId}`).value;
+        
+        let isMissing = false;
+        cart.forEach((item) => {
+            if(productId ===  item.productId){
+                item.quantity += quantity;
+                isMissing =true;
+            }
+        })
+        if(!isMissing){
+            cart.push({
+                productId,
+                quantity
+            })
+        }
+        console.log(cart);
 
+        
+        
+    })
+})
 

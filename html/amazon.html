@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon Project</title>
+    <title>Amazon</title>
     <link rel="shortcut icon" href="/images/images/amazon-mobile-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/general.css">
     <link rel="stylesheet" href="/styles/amazon-header.css">
     <link rel="stylesheet" href="/styles/amazon.css">
-    <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
-
+    
 </head>
 <body>
     <div class="header">
@@ -29,15 +29,15 @@
 
         <div class="header-right-section">
             
-            <a href="" class="orders-link">
+            <a href="/html/orders.html" class="orders-link">
                 <span class="returns-text">Returns</span>
                 <span class="orders-text">& Orders</span>
             </a>
             
             
-            <a href="" class="cart-links">
+            <a href="/html/checkout.html" class="cart-links">
                 <img src="/images/images/icons/cart-icon.png" alt="cart" class="cart-icon">
-                <div class="cart-quantity">3</div>
+                <div class="cart-quantity js-cart-quantity">0</div>
                 <div class="cart-text">Cart</div>
             </a>
             
@@ -45,111 +45,11 @@
     </div>
 
     <main>
-        <div class="product-grid">
-            <div class="products">
-                <div class="image-container">
-                    <img src="/images/images/products/athletic-cotton-socks-6-pairs.jpg" alt="socks">
-                </div>
-                
-                <div class="product-name">Black and Gray Athletic Cotton Socks - 6 Pairs</div>
-                <div class="rating-review">
-                    <img src="/images/images/ratings/rating-45.png" class="rating">
-                    <span class="reviews">87</span>
-                </div>
-                
-                <div class="price">₹299</div>
-                <select name="quantity" class="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-    
-                <div class="item-added">
-                    <img src="/images/images/icons/checkmark.png">
-    
-                    Added to Cart
-                </div>
-    
-                <button type="button" class="add-to-cart">Add to Cart</button>
-            </div>
-    
-            <div class="products">
-                <div class="image-container">
-                    <img src="/images/images/products/intermediate-composite-basketball.jpg" alt="socks">
-                </div>
-                
-                <div class="product-name">Intermediate Size Basketball</div>
-                <div class="rating-review">
-                    <img src="/images/images/ratings/rating-35.png" class="rating">
-                    <span class="reviews">62</span>
-                </div>
-                
-                <div class="price">₹599</div>
-                <select name="quantity" class="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-    
-                <div class="item-added">
-                    <img src="/images/images/icons/checkmark.png">
-    
-                    Added to Cart
-                </div>
-    
-                <button type="button" class="add-to-cart">Add to Cart</button>
-            </div>
-    
-            <div class="products">
-                <div class="image-container">
-                    <img src="/images/images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg" alt="socks">
-                </div>
-                
-                <div class="product-name">Adults Plain Cotton T-Shirt - 2 Pack</div>
-                <div class="rating-review">
-                    <img src="/images/images/ratings/rating-45.png" class="rating">
-                    <span class="reviews">216</span>
-                </div>
-                
-                <div class="price">₹899</div>
-                <select name="quantity" class="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-    
-                <div class="item-added">
-                    <img src="/images/images/icons/checkmark.png">
-    
-                    Added to Cart
-                </div>
-    
-                <button type="button" class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        
+       <div class="product-grid">
+            
     </main>
-    
+    <script src="/data/cart.js"></script>
+    <script src="/data/products.js"></script>
+    <script src="/script/amazon.js"></script>
 </body>
 </html>

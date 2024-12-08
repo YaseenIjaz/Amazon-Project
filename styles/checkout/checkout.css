@@ -1,0 +1,206 @@
+main{
+    max-width: 1100px;
+    margin-top: 70px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+.checkout-grid{
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    column-gap: 12px;
+
+    /* Use align-items: start; to prevent the elements
+     in the grid from stretching vertically. */
+    align-items: start;
+}
+.title{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.items-orderd{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(213, 217, 217);
+    padding:20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    
+}
+
+.order-delivery-date{
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(0, 118, 0);
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+.ordered-detail-grid{
+    display: grid;
+    grid-template-columns: 110px 1fr 1fr;
+    column-gap: 30px;
+}
+.ordered-image-container{
+    display: flex;
+    justify-content: center;
+}
+.ordered-image-container img{
+    max-width: 110px;
+    max-height: 110px;
+}
+
+.product-name{
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.product-price{
+    color: rgb(177, 39, 4);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.quantity-modification{
+    display: flex;
+    gap: 12px;
+}
+.modification{
+    display: flex;
+    gap: 8px;
+    color:rgb(1, 124, 182) ;
+    cursor: pointer;
+}
+.update:hover,
+.delete:hover{
+    color: rgb(216, 122, 0);
+}
+.free-delivery,
+.premium-delivery,
+.extra-premium-delivery{
+    display: flex;
+    margin-top: 15px; 
+    gap: 5px;
+}
+.delivery-heading{
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+input[type="radio"]{
+    transform: scale(1.5);
+    cursor: pointer;
+}
+.deliverty-date-options{
+    color: rgb(0, 118, 0);
+    font-weight: 700;
+}
+.delivery-amount{
+    color: rgb(120, 120, 120);
+    font-size: 15px;
+}
+
+
+.order-summary{
+    border: 1px solid rgb(213, 217, 217);
+    padding: 18px ;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    
+}
+.summary-title{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.summary-items-amount,
+.summary-shipping-amount,
+.summary-total-before-tax,
+.summary-tax,
+.summary-total{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 10px;
+}
+
+.items-total,
+.shipping-total,
+.total-before-tax,
+.tax,
+.total{
+    text-align: right;
+}
+.total-before-tax{
+    border-top: 1px solid rgb(222, 222, 222);
+}
+.summary-total-before-tax div{
+    padding-top: 9px;
+}
+.summary-total{
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(177, 39, 4);
+    padding-top: 20px;
+    border-top: 1px solid rgb(222, 222, 222);
+}
+.place-order{
+    background-color: rgb(255, 216, 20);
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    height: 36px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+.place-order:hover{
+    background-color: rgb(247, 202, 0);
+}
+
+
+
+@media(max-width:999px){
+    main{
+        max-width: 500px;
+    }
+    .order-summary{
+        /* grid-row: 1 means this element will be placed into row
+      1 in the grid. (Normally, the row that an element is
+      placed in is determined by the order of the elements in
+      the HTML. grid-row overrides this default ordering). */
+        grid-row: 1;
+        
+    }
+    
+    .checkout-grid{
+        grid-template-columns: 1fr;
+        row-gap: 15px;
+        
+    }
+
+   
+
+    .ordered-detail-grid{
+        grid-template-columns: 100px 1fr;
+        row-gap: 30px;
+    }
+
+    .delivery-option{
+        /* span 2 means this element will take up 2 columns
+       in the grid (Normally, each element takes up 1
+       column in the grid). */
+        grid-column: span 2;
+    }
+
+    .free-delivery,
+    .premium-delivery,
+    .extra-premium-delivery{
+        display: flex;
+        margin-top: 8px; 
+        gap: 5px;
+    }
+}
+

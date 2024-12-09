@@ -72,10 +72,7 @@ main{
     color:rgb(1, 124, 182) ;
     cursor: pointer;
 }
-.update:hover,
-.delete:hover{
-    color: rgb(216, 122, 0);
-}
+
 .free-delivery,
 .premium-delivery,
 .extra-premium-delivery{
@@ -159,7 +156,27 @@ input[type="radio"]{
 .place-order:hover{
     background-color: rgb(247, 202, 0);
 }
+.quantity-input{
+    width: 30px;
+    height: 20px;
+    font-size: 16px;
+}
 
+.save-quantity,
+.quantity-input{
+    display: none;
+}
+
+.is-editing-quantity .save-quantity{
+    display: initial;
+}
+.is-editing-quantity .quantity-input{
+    display: initial;
+}
+.is-editing-quantity .update,
+.is-editing-quantity .quantity{
+    display: none;
+}
 
 
 @media(max-width:999px){

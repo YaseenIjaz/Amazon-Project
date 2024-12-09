@@ -46,12 +46,21 @@ cart.forEach((cartItem) => {
                         <div class="product-price">₹${matchingProduct.price}</div>
                     </div>
                     <div class="quantity-modification">
-                        <div class="quantity">
+                        <div>
                             Quantity: <span class="quantity">${Number(cartItem.quantity)}</span>
                         </div>
                         <div class="modification">
-                            <div class="update">Update</div>
-                            <div class="delete js-delete-button"
+                            <div class="update
+                            link-primary
+                            js-update-button"
+                            data-update-id=${matchingProduct.id}>
+                                Update
+                            </div>
+
+                            <input type="number" class="quantity-input">
+                            <span class="save-quantity link-primary" data-save-id =${matchingProduct.id}>Save</span>
+
+                            <div class="delete link-primary js-delete-button"
                             data-delete-id=${matchingProduct.id}>
                                 Delete
                             </div>
@@ -100,12 +109,27 @@ document.querySelectorAll('.js-delete-button').forEach((button) => {
     button.addEventListener('click',() =>{ 
         const productId = button.dataset.deleteId;
         removeItem(productId);
-        
         document.querySelector(`.js-items-orderd-${productId}`).remove();
         console.log(cart);
-        
         updateCart()
-    })
-    
-    
+    }); 
 })
+
+document.querySelectorAll('.js-update-button').forEach((button) => {
+    button.addEventListener('click',() => {
+        const productId = button.dataset.updateId;
+        console.log(productId);
+        
+        const container = document.querySelector(`.js-items-orderd-${productId}`);
+        container.classList.add('is-editing-quantity');
+    });
+});
+
+document.querySelectorAll('.save-quantity').forEach((button) => {
+    button.addEventListener('click',() => {
+        const productId = button.dataset.saveId;
+        
+        const container = document.querySelector(`.js-items-orderd-${productId}`);
+        container.classList.remove('is-editing-quantity');  
+    });
+});

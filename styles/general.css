@@ -71,3 +71,15 @@ input, select, button {
   overflow: hidden;
 }
 
+.link-primary {
+  color: rgb(1, 124, 182);
+  cursor: pointer;
+}
+
+.link-primary:hover {
+  color: rgb(196, 80, 0);
+}
+select:focus,
+input:focus {
+  outline: 2px solid rgb(255, 153, 0);
+}

@@ -1,16 +1,19 @@
-import {cart, addToCart} from '../data/cart.js';
+import {cart, addToCart,calculateCart} from '../data/cart.js';
 import {products} from '../data/products.js'
 
 let productHTML = '';
 
-function updateCart(){
-    let cartQuantity = 0;
-    cart.forEach((item) =>{
-        cartQuantity += item.quantity;
-        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-    }) 
-}
+function updateCart() {
+    const cartQuantity = calculateCart();
 
+    const cartItemsElement = document.querySelector('.js-cart-quantity');
+    if (cartQuantity === 0) {
+        cartItemsElement.innerHTML = `0`;
+    } else {
+        cartItemsElement.innerHTML = `${cartQuantity}`;
+    }
+}
+updateCart() 
 function displayAddedMsg(productId){
     const addedMsg = document.querySelector(`.js-added-to-cart-${productId}`);
     addedMsg.classList.add ('added-to-cart-visible');

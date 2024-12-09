@@ -1,13 +1,22 @@
-import {cart,removeItem} from '../data/cart.js';
+import {cart,removeItem,saveToStorage,calculateCart} from '../data/cart.js';
 import { products } from '../data/products.js';
 
+function updateCart() {
+    const cartQuantity = calculateCart();
 
+    const cartItemsElement = document.querySelector('.js-cart-items');
+    if (cartQuantity === 0) {
+        cartItemsElement.innerHTML = `0 items`;
+    } else {
+        cartItemsElement.innerHTML = `${cartQuantity} items`;
+    }
+}
 
+updateCart()
 let checkOutHTML ='';
 
 cart.forEach((cartItem) => {
     const productId = cartItem.productId;
-
     let matchingProduct;
     products.forEach((product) => {
         if(product.id === productId){
@@ -86,12 +95,16 @@ cart.forEach((cartItem) => {
 
 document.querySelector('.js-orders-grid').innerHTML = checkOutHTML;
 
+
 document.querySelectorAll('.js-delete-button').forEach((button) => {
-    button.addEventListener('click',() =>{
+    button.addEventListener('click',() =>{ 
         const productId = button.dataset.deleteId;
         removeItem(productId);
         
         document.querySelector(`.js-items-orderd-${productId}`).remove();
+        console.log(cart);
+        
+        updateCart()
     })
     
     

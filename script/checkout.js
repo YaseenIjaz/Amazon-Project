@@ -1,6 +1,6 @@
-import {cart,removeItem,saveToStorage,calculateCart,updateQuantity} from '../data/cart.js';
+import {cart,removeItem,saveToStorage,calculateCart,updateQuantity,updateDeliveryOption} from '../data/cart.js';
 import { products } from '../data/products.js';
-import { deliveryOptions,getDeliveryDate } from '../data/deliveryOptions.js';
+import { deliveryOptions } from '../data/deliveryOptions.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 function updateCart() {
@@ -13,6 +13,7 @@ function updateCart() {
         cartItemsElement.innerHTML = `${cartQuantity} items`;
     }
 }
+console.log(cart);
 
 updateCart()
 let checkOutHTML ='';
@@ -39,7 +40,9 @@ cart.forEach((cartItem) => {
            deliveryOption = option;
         }
     })
-    const dateString = getDeliveryDate(deliveryOption);
+    const today = dayjs();
+    const deliveryDate = today.add(deliveryOption.deliveryDays,'days');
+    const dateString = deliveryDate.format('dddd, MMMM D');
 
     checkOutHTML +=
     `
@@ -152,7 +155,9 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
 
     deliveryOptions.forEach((deliveryOption) =>{
 
-        const dateString = getDeliveryDate(deliveryOption);
+        const today = dayjs();
+        const deliveryDate = today.add(deliveryOption.deliveryDays,'days');
+        const dateString = deliveryDate.format('dddd, MMMM D');
 
         const priceString = deliveryOption.price === 0 
                                 ?'Free'
@@ -162,7 +167,9 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
 
         deliveryHTML +=
             `
-            <div class="delivery-option">
+            <div class="delivery-option js-delivery-option"
+            data-product-id=${matchingProduct.id}
+            data-delivery-option-id=${deliveryOption.id}>
                 <input type="radio" class='delivery-option-input' name="delivery-date-${matchingProduct.id}" ${isChecked ?'checked' :''}>
                 <div class='delivery-details'>
                     <div class="deliverty-date-options">
@@ -177,3 +184,13 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
     });
     return deliveryHTML;
 }
+
+document.querySelectorAll('.js-delivery-option').forEach((inputElement) =>{
+    inputElement.addEventListener('click',() => {
+        const productId = inputElement.dataset.productId;
+        const deliveryOptionId = inputElement.dataset.deliveryOptionId;
+        
+        
+        updateDeliveryOption(productId, deliveryOptionId);
+    })
+})

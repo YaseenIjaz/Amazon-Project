@@ -87,10 +87,7 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
         addToCart(productId,quantity);
         updateCart();
         displayAddedMsg(productId);
-        
-        
-        
-        
+         
     })
 })
 

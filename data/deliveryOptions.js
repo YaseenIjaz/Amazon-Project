@@ -18,11 +18,4 @@ export const deliveryOptions = [
     }
 ]
 
-export function getDeliveryDate(deliveryOption){
 
-    const today = dayjs();
-    const deliveryDate = today.add(deliveryOption.deliveryDays,'days');
-    const dateString = deliveryDate.format('dddd, MMMM D');
-
-    return dateString;
-}

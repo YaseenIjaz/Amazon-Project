@@ -16,7 +16,9 @@ function updateCart() {
 console.log(cart);
 
 updateCart()
-let checkOutHTML ='';
+
+function renderOrderSummary(){
+    let checkOutHTML ='';
 
 cart.forEach((cartItem) => {
     const productId = cartItem.productId;
@@ -192,5 +194,9 @@ document.querySelectorAll('.js-delivery-option').forEach((inputElement) =>{
         
         
         updateDeliveryOption(productId, deliveryOptionId);
+        renderOrderSummary()
     })
 })
+};
+
+renderOrderSummary()

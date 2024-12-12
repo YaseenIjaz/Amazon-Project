@@ -3,6 +3,8 @@ import { products } from '../data/products.js';
 import { deliveryOptions } from '../data/deliveryOptions.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
+
+
 function updateCart() {
     const cartQuantity = calculateCart();
 
@@ -108,7 +110,8 @@ document.querySelectorAll('.js-delete-button').forEach((button) => {
         const productId = button.dataset.deleteId;
         removeItem(productId);
         document.querySelector(`.js-items-orderd-${productId}`).remove();
-        updateCart()
+        updateCart();
+        renderPaymentSummary();
     }); 
 })
 
@@ -147,7 +150,8 @@ document.querySelectorAll('.save-quantity').forEach((button) => {
         }
 
         const container = document.querySelector(`.js-items-orderd-${productId}`);
-        container.classList.remove('is-editing-quantity');    
+        container.classList.remove('is-editing-quantity');
+        renderPaymentSummary()    
     });
 });
 
@@ -194,9 +198,76 @@ document.querySelectorAll('.js-delivery-option').forEach((inputElement) =>{
         
         
         updateDeliveryOption(productId, deliveryOptionId);
-        renderOrderSummary()
+        renderOrderSummary();
+        renderPaymentSummary();
     })
 })
 };
 
-renderOrderSummary()
+function renderPaymentSummary(){
+    let cost = 0 ;
+    let shipping = 0;
+
+    cart.forEach((cartItem) =>{
+        const productId =cartItem.productId;
+
+        let matchingProduct;
+        products.forEach((product) =>{
+            if(product.id === productId){
+                matchingProduct = product;
+            }
+        });
+        cost += matchingProduct.price * cartItem.quantity;
+
+        let deliveryOption;
+        deliveryOptions.forEach((option) =>{
+            if(cartItem.deliveryOptionId === option.id){
+                deliveryOption = option;
+            }
+        });
+        shipping += deliveryOption.price;
+        
+    })
+    
+    
+    
+    
+    let costBeforeTax = (cost)+(shipping);
+
+    let tax = (((costBeforeTax*100)*0.1)/100).toFixed(2);
+    let total = (costBeforeTax + Number(tax)).toFixed(2);
+    let paymentSummaryHTML ='';
+
+    paymentSummaryHTML += 
+        `
+        <div class="summary-title">Order Summary</div>
+        <div class="summary-items-amount">
+            <div>Items (${calculateCart()}):</div>
+            <div class="items-total">₹${cost}</div>
+        </div>
+        <div class="summary-shipping-amount">
+            <div >Shipping & Handling:</div>
+            <div class="shipping-total">₹${shipping}</div>
+        </div>
+        <div class="summary-total-before-tax">
+            <div>Total before tax:</div>
+            <div class="total-before-tax">₹${costBeforeTax}</div>
+        </div>
+        <div class="summary-tax">
+            <div>Estimated tax (10%):</div>
+            <div class="tax">₹${tax}</div>
+        </div>
+
+        <div class="summary-total">
+            <div class="total-title">Order Total:</div>
+            <div class="total">₹${total}</div>
+        </div>
+
+            <button type="button" class="place-order">Place your order</button>
+        </div>
+        `
+    document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
+}
+
+renderOrderSummary();
+renderPaymentSummary();

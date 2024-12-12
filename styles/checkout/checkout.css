@@ -105,7 +105,7 @@ main{
 }
 
 
-.order-summary{
+.payment-summary{
     border: 1px solid rgb(213, 217, 217);
     padding: 18px ;
     border-radius: 5px;
@@ -190,7 +190,7 @@ main{
     main{
         max-width: 500px;
     }
-    .order-summary{
+    .payment-summary{
         /* grid-row: 1 means this element will be placed into row
       1 in the grid. (Normally, the row that an element is
       placed in is determined by the order of the elements in

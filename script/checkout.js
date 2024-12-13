@@ -1,6 +1,6 @@
 import {cart,removeItem,saveToStorage,calculateCart,updateQuantity,updateDeliveryOption} from '../data/cart.js';
 import { products } from '../data/products.js';
-import { deliveryOptions } from '../data/deliveryOptions.js';
+import { deliveryOptions,calculateDeliveryDate } from '../data/deliveryOptions.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 
@@ -44,9 +44,8 @@ cart.forEach((cartItem) => {
            deliveryOption = option;
         }
     })
-    const today = dayjs();
-    const deliveryDate = today.add(deliveryOption.deliveryDays,'days');
-    const dateString = deliveryDate.format('dddd, MMMM D');
+    
+    const dateString = calculateDeliveryDate(deliveryOption);
 
     checkOutHTML +=
     `
@@ -109,7 +108,7 @@ document.querySelectorAll('.js-delete-button').forEach((button) => {
     button.addEventListener('click',() =>{ 
         const productId = button.dataset.deleteId;
         removeItem(productId);
-        document.querySelector(`.js-items-orderd-${productId}`).remove();
+        renderOrderSummary()
         updateCart();
         renderPaymentSummary();
     }); 
@@ -140,15 +139,15 @@ document.querySelectorAll('.save-quantity').forEach((button) => {
             return;
         }else if(newQuantity === 0){
             removeItem(productId);
-            document.querySelector(`.js-items-orderd-${productId}`).remove();
-            updateCart()
+            renderOrderSummary()
+            
         }else{
             updateQuantity(productId,newQuantity);
 
             document.querySelector(`.js-quantity-${productId}`).innerHTML = newQuantity;
-            updateCart();
+            
         }
-
+        updateCart();
         const container = document.querySelector(`.js-items-orderd-${productId}`);
         container.classList.remove('is-editing-quantity');
         renderPaymentSummary()    
@@ -161,9 +160,7 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
 
     deliveryOptions.forEach((deliveryOption) =>{
 
-        const today = dayjs();
-        const deliveryDate = today.add(deliveryOption.deliveryDays,'days');
-        const dateString = deliveryDate.format('dddd, MMMM D');
+        const dateString = calculateDeliveryDate(deliveryOption);
 
         const priceString = deliveryOption.price === 0 
                                 ?'Free'
@@ -195,7 +192,6 @@ document.querySelectorAll('.js-delivery-option').forEach((inputElement) =>{
     inputElement.addEventListener('click',() => {
         const productId = inputElement.dataset.productId;
         const deliveryOptionId = inputElement.dataset.deliveryOptionId;
-        
         
         updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();

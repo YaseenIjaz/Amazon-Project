@@ -1,5 +1,6 @@
-import { userDetails } from "../data/userDetails.js";
+import { userDetails,getUser } from "../data/userDetails.js";
 
+export let userInfo;
 
 function showCreateAccount() {
     document.getElementById('login-form').classList.add('hidden');
@@ -16,7 +17,7 @@ document.querySelector('.js-show-login').addEventListener('click', showLogin);
 
 
 function validatePasswords() {
-    const password = document.querySelector('.password').value;
+    const password = document.querySelector('#password').value;
     const passwordAgain = document.querySelector('.password-again');
     const errorMessage = document.getElementById('password-error');
 
@@ -68,15 +69,7 @@ function login() {
         alert('Please fill out all fields.')
     }
 
-    let userInfo;
-
-    userDetails.forEach((user) => {
-        console.log(user.email);
-        
-        if(user.email === email){
-            userInfo = user;
-        };
-    }); 
+    userInfo = getUser(email);
 
     if (userInfo) {
         if (userInfo.password === password) {

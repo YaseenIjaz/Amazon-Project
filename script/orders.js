@@ -1,53 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon Orders</title>
-    <link rel="shortcut icon" href="images/images/amazon-mobile-logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="styles/general.css">
-    <link rel="stylesheet" href="styles/amazon-header.css">
-    <link rel="stylesheet" href="styles/orders.css">
-    <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
+import {cart,removeItem,saveToStorage,calculateCart,updateQuantity,updateDeliveryOption} from '../data/cart.js';
+import { products } from '../data/products.js';
+import { deliveryOptions,calculateDeliveryDate } from '../data/deliveryOptions.js';
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+import { orders } from '../data/orders.js';
 
-</head>
-<body>
-    <div class="header">
-        <div class="header-left-section">
-            <a href="carousel-page.html" class="header-link">
-                <img src="images/images/amazon-logo-white.png" alt="amazon" class="amazon-logo">
+let ordersHTML = '';
 
-                <img src="images/images/amazon-mobile-logo-white.png" alt="" class="amazon-mobile-logo">
-            </a>
-        </div>
-        
-        <div class="header-middle-section">
-            <input type="text" class="search-bar" placeholder="Search">
-            <button type="button" class="search-button">
-                <img src="images/images/icons/search-icon.png" alt="search">
-            </button>
-        </div>
-
-        <div class="header-right-section">
-            
-            <a href="orders.html" class="orders-link">
-                <span class="returns-text">Returns</span>
-                <span class="orders-text">& Orders</span>
-            </a>
-            
-            
-            <a href="checkout.html" class="cart-links">
-                <img src="images/images/icons/cart-icon.png" alt="cart" class="cart-icon">
-                <div class="cart-quantity">3</div>
-                <div class="cart-text">Cart</div>
-            </a>
-            
-        </div>
-    </div>
-
-    <main>
-        <div class="title">Your Orders</div>
-        <div class="order-grid">    
+orders.forEach((order) => {
+    ordersHTML += 
+    `
+    <div class="order-grid">    
             <div class="order">
                 <div class="order-head">
                     <div class="order-heading-left">
@@ -194,7 +156,5 @@
 
             </div>
         </div>
-    </main>
-<script type="module" src="script/orders.js"></script>
-</body>
-</html>
+    `
+})

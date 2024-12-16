@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 30px 40px;
+    width: 400px
+}
+
+#amazon-logo{
+    text-align: center;
+    margin-bottom: 20px;
+}
+#amazon-logo img{
+    width: 120px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+button {
+    font-weight: bold;
+    padding: 8px 12px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.small-text {
+    font-size: 12px;
+    color: #333333;
+    margin-top: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #0066c0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.extra-options {
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+    
+.error:focus {
+    outline:2px solid #d62828; /* Slightly darker red */
+    box-shadow: 0 0 8px rgba(214, 40, 40, 1);
+}

@@ -3,7 +3,12 @@ main {
     background-color: whitesmoke;
     height: 1400px;
   }
-  
+  .search-button{
+    height: 38px;
+  }
+  .search-button img{
+    margin-top: 0;
+  }
   .starting {
     position: relative;
     width: 100%;

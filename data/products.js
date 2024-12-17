@@ -12,6 +12,10 @@ class Product{
     this.rating = productDetails.rating
     this.price = productDetails.price
   }
+
+  getStarsUrl(){
+   return `images/images/ratings/rating-${this.rating.stars*10}.png`
+  }
 }
 
 export const products = [

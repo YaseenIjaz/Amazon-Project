@@ -41,7 +41,7 @@ products.forEach((product) => {
                     ${product.name}
                 </div>
                 <div class="rating-review">
-                    <img src="images/images/ratings/rating-${product.rating.stars*10}.png" class="rating">
+                    <img src="${product.getStarsUrl()}" class="rating">
                     <span class="reviews">${product.rating.count}</span>
                 </div>
                 

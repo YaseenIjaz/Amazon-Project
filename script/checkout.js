@@ -1,12 +1,14 @@
-import {cart,removeItem,saveToStorage,calculateCart,updateQuantity,updateDeliveryOption} from '../data/cart.js';
+import { cart } from '../data/cart-class.js';
 import { products } from '../data/products.js';
 import { deliveryOptions,calculateDeliveryDate } from '../data/deliveryOptions.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 
 
+
+
 function updateCart() {
-    const cartQuantity = calculateCart();
+    const cartQuantity = cart.calculateCart();
 
     const cartItemsElement = document.querySelector('.js-cart-items');
     if (cartQuantity === 0) {
@@ -15,14 +17,14 @@ function updateCart() {
         cartItemsElement.innerHTML = `${cartQuantity} items`;
     }
 }
-console.log(cart);
+
 
 updateCart()
 
 function renderOrderSummary(){
     let checkOutHTML ='';
 
-cart.forEach((cartItem) => {
+cart.cartItems.forEach((cartItem) => {
     const productId = cartItem.productId;
     let matchingProduct;
 
@@ -107,7 +109,7 @@ document.querySelector('.js-orders-grid').innerHTML = checkOutHTML;
 document.querySelectorAll('.js-delete-button').forEach((button) => {
     button.addEventListener('click',() =>{ 
         const productId = button.dataset.deleteId;
-        removeItem(productId);
+        cart.removeItem(productId);
         renderOrderSummary()
         updateCart();
         renderPaymentSummary();
@@ -138,11 +140,11 @@ document.querySelectorAll('.save-quantity').forEach((button) => {
             alert('Not a valid quantity');
             return;
         }else if(newQuantity === 0){
-            removeItem(productId);
+            cart.removeItem(productId);
             renderOrderSummary()
             
         }else{
-            updateQuantity(productId,newQuantity);
+            cart.updateQuantity(productId,newQuantity);
 
             document.querySelector(`.js-quantity-${productId}`).innerHTML = newQuantity;
             
@@ -193,7 +195,7 @@ document.querySelectorAll('.js-delivery-option').forEach((inputElement) =>{
         const productId = inputElement.dataset.productId;
         const deliveryOptionId = inputElement.dataset.deliveryOptionId;
         
-        updateDeliveryOption(productId, deliveryOptionId);
+        cart.updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
         renderPaymentSummary();
     })
@@ -204,7 +206,7 @@ function renderPaymentSummary(){
     let cost = 0 ;
     let shipping = 0;
 
-    cart.forEach((cartItem) =>{
+    cart.cartItems.forEach((cartItem) =>{
         const productId =cartItem.productId;
 
         let matchingProduct;
@@ -238,7 +240,7 @@ function renderPaymentSummary(){
         `
         <div class="summary-title">Order Summary</div>
         <div class="summary-items-amount">
-            <div>Items (${calculateCart()}):</div>
+            <div>Items (${cart.calculateCart()}):</div>
             <div class="items-total">₹${cost}</div>
         </div>
         <div class="summary-shipping-amount">
@@ -259,11 +261,36 @@ function renderPaymentSummary(){
             <div class="total">₹${total}</div>
         </div>
 
-            <button type="button" class="place-order">Place your order</button>
+            <button type="button" class="place-order js-place-order">Place your order</button>
         </div>
         `
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
+
+    document.querySelector('.js-place-order')
+    .addEventListener('click', async () => {
+      try {
+        const response = await fetch('https://supersimplebackend.dev/orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            cart: cart
+          })
+        });
+
+        const order = await response.json();
+        addOrder(order);
+
+      } catch (error) {
+        console.log('Unexpected error. Try again later.');
+      }
+
+      window.location.href = 'orders.html';
+    });
 }
+
+
 
 renderOrderSummary();
 renderPaymentSummary();

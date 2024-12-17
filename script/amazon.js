@@ -1,10 +1,10 @@
-import {cart, addToCart,calculateCart} from '../data/cart.js';
+import { cart } from '../data/cart-class.js';
 import {products} from '../data/products.js'
 
 let productHTML = '';
 
 function updateCart() {
-    const cartQuantity = calculateCart();
+    const cartQuantity = cart.calculateCart();
 
     const cartItemsElement = document.querySelector('.js-cart-quantity');
     if (cartQuantity === 0) {
@@ -84,7 +84,7 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
         const productId = button.dataset.productId;
         let quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
 
-        addToCart(productId,quantity);
+        cart.addToCart(productId,quantity);
         updateCart();
         displayAddedMsg(productId);
          

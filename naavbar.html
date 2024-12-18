@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Navbar</title>
+  <link rel="stylesheet" href="styles/navbar.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="categories">
+      <button class="category-btn" onclick="filterCategory('mens')">Men's Fashion</button>
+      <button class="category-btn" onclick="filterCategory('womens')">Women's Fashion</button>
+      <button class="category-btn" onclick="filterCategory('toys')">Toys</button>
+      <button class="category-btn" onclick="filterCategory('electronics')">Electronics</button>
+      <button class="category-btn" onclick="filterCategory('home')">Home & Kitchen</button>
+    </div>
+  </nav>
+
+  <!-- Product Container -->
+  <div id="productContainer" class="product-container"></div>
+
+  <script src="script/navbar.js"></script>
+</body>
+</html>

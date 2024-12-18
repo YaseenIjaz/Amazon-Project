@@ -24,11 +24,15 @@ class Product{
     this.rating = productDetails.rating;
     this.price = productDetails.price;
     this.keywords = productDetails.keywords;
+    this.type = productDetails.type;
   }
 
   getStarsUrl(){
    return `images/images/ratings/rating-${this.rating.stars*10}.png`
   }
+}
+function generateProductId() {
+  return crypto.randomUUID();
 }
 
 export const products = [
@@ -928,3 +932,104 @@ export const products = [
   ].map((productDetails) =>{
     return new Product(productDetails);
   });
+
+export const groceries = [
+  {
+    id: "44eee002-f39a-43c8-ad12-3deb6d4f78ba",
+    image: "images/images/products/rice.jpg",
+    name: "India Gate Basmati Rice Everyday 5 kg",
+    rating: {
+      stars: 4,
+      count: 2087
+    },
+    price: 347,
+    keywords: [
+      "rice",
+      "groceries",
+      "basmati"
+    ],
+    type: 'groceries'
+  },
+  {
+    id: "917227d8-7267-4de0-a430-b7e2a646a521",
+    image: "images/images/products/salt.jpg",
+    name: "Tata Salt 1 kg",
+    rating: {
+      stars: 4.5,
+      count: 67093
+    },
+    price: 28,
+    keywords: [
+      "salt",
+      "groceries",
+      "tata"
+    ],
+    type: 'groceries'
+  },
+  {
+    id: "9fc2702e-9059-4cd0-a345-a35a2bbb4e0c",
+    image: "images/images/products/biscuits.jpg",
+    name: "Unibic Cookies, 75g(Pack Of 10)",
+    rating: {
+      stars: 4.5,
+      count: 67093
+    },
+    price: 28,
+    keywords: [
+      "cookies",
+      "groceries",
+      "biscuits"
+    ],
+    type: 'groceries'
+  },
+  {
+    id: "db60931b-5b1e-4b7e-a67a-243e7de254bd",
+    image: "images/images/products/ariel-detergent-liquid.jpg", 
+    name: "Ariel Liquid Detergent Front Load 4L + 2L",
+    rating: {
+      stars: 4.5,
+      count: 18997
+    },
+    price: 898,
+    keywords: [
+      "detergent",
+      "liquid detergent",
+      "groceries"
+    ],
+    type: 'groceries'
+  },
+  {
+    id: "744e2bd7-3bfb-4dfb-aa81-9354c9bec168",
+    image: "images/images/products/fortune-sunflower-oil.jpg",
+    name: "Fortune Sunlite Refined Sunflower Oil, 1L",
+    rating: {
+      stars: 4.5,
+      count: 36934
+    },
+    price: 170,
+    keywords: [
+      "oil",
+      "sunflower oil",
+      "groceries"
+    ],
+    type: 'groceries'
+  },
+  {
+    id: "fb22b258-4d66-461f-a61b-8aab2d03f9ed",
+    image: "images/images/products/kelloggs.jpg",
+    name: "Kellogg's Muesli Fruit Nut & Seeds 750G | 12-In-1 Power Breakfast | India'S No. 1 Muesli | Multigrain Breakfast Cereal",
+    rating: {
+      stars: 4.5,
+      count: 23322
+    },
+    price: 369,
+    keywords: [
+      "kelloggs",
+      "breakfast",
+      "groceries"
+    ],
+    type: 'groceries'
+  }
+].map((productDetails) =>{
+  return new Product(productDetails);
+});

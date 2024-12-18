@@ -3,6 +3,8 @@ import { calculateDeliveryDate,getDeliveryOption } from './deliveryOptions.js';
 import { cart } from './cart-class.js';
 import {deliveryOptions} from './deliveryOptions.js';
 
+
+
 export class Orders {
   id;
   orderTime;
@@ -40,9 +42,9 @@ export class Orders {
 
   
   estimatedDeliveryTime(deliveryOptionId) {
-    deliveryDays : getDeliveryOption(deliveryOptionId).deliveryDays
-    return dayjs().add(this.deliveryDays,'days').toISOString 
-  }
+    const deliveryDays = getDeliveryOption(deliveryOptionId).deliveryDays;
+    return dayjs().add(deliveryDays, 'days').toISOString();
+}
 }
 
 export const orders = JSON.parse(localStorage.getItem('orders')) || [];

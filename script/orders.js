@@ -1,11 +1,23 @@
 import { getProduct,products } from '../data/products.js';
+import { cart } from '../data/cart-class.js';
 import { orders } from '../data/orders.js';
+import { getDeliveryOption } from '../data/deliveryOptions.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import '../data/orders.js'
 
-console.log(orders);
+function updateCart() {
+    const cartQuantity = cart.calculateCart();
 
-async function loadPage() {
+    const cartItemsElement = document.querySelector('.js-cart-quantity');
+    if (cartQuantity === 0) {
+        cartItemsElement.innerHTML = `0`;
+    } else {
+        cartItemsElement.innerHTML = `${cartQuantity}`;
+    }
+}
+updateCart() 
+
+function loadPage() {
   
 
   let ordersHTML = '';
@@ -14,23 +26,28 @@ async function loadPage() {
     const orderTimeString = dayjs(order.orderTime).format('MMMM D');
 
     ordersHTML += `
-      <div class="order-container">
-        <div class="order-header">
-          <div class="order-header-left-section">
-            <div class="order-date">
-              <div class="order-header-label">Order Placed:</div>
-              <div>${orderTimeString}</div>
+      <div class="order">
+        <div class="order-head">
+            <div class="order-heading-left">
+                <div class="order-date">
+                    <div class="orders-heading">Order Placed:</div>
+                    <div>${orderTimeString}</div>
+                </div>
+                <div class="order-amount">
+                    <div class="orders-heading">Total:</div>
+                    <div>₹${order.totalPrice}</div>
+                </div>
+                
             </div>
-            <div class="order-total">
-              <div class="order-header-label">Total:</div>
-              <div>$${(order.totalCostCents)}</div>
+
+            <div class="order-heading-right">
+                <div class="orders-heading">Order ID:</div>
+                <div>${order.id}</div>
             </div>
-          </div>
-          <div class="order-header-right-section">
-            <div class="order-header-label">Order ID:</div>
-            <div>${order.id}</div>
-          </div>
+
         </div>
+        
+        
         <div class="order-details-grid">
           ${productsListHTML(order)}
         </div>
@@ -43,35 +60,37 @@ async function loadPage() {
 
     order.products.forEach((productDetails) => {
       const product = getProduct(productDetails.productId);
-
+      
       productsListHTML += `
-        <div class="product-image-container">
-          <img src="${product.image}">
-        </div>
-        <div class="product-details">
-          <div class="product-name">
-            ${product.name}
-          </div>
-          <div class="product-delivery-date">
-            Arriving on: ${
-              dayjs(productDetails.estimatedDeliveryTime).format('MMMM D')
-            }
-          </div>
-          <div class="product-quantity">
-            Quantity: ${productDetails.quantity}
-          </div>
-          <button class="buy-again-button button-primary">
-            <img class="buy-again-icon" src="images/icons/buy-again.png">
-            <span class="buy-again-message">Buy it again</span>
-          </button>
-        </div>
-        <div class="product-actions">
-          <a href="tracking.html?orderId=${order.id}&productId=${product.id}">
-            <button class="track-package-button button-secondary">
-              Track package
-            </button>
-          </a>
-        </div>
+         <div class="order-image">
+                <img src="${product.image}">
+            </div>
+
+            <div class="delivery-details">
+                <div class="product-name">
+                    Black and Gray Athletic Cotton Socks - 6 Pairs
+                </div>
+                <div class="deliverty-date">
+                    Arriving on: ${
+                      dayjs(productDetails.estimatedDelivery).format('MMMM D')
+                    }
+                </div>
+                <div class="quantity">Quantity: ${productDetails.quantity}</div>
+
+                <button type="button" class="buy-again">
+                    <img src="images/images/icons/buy-again.png" alt="buy again">
+                    <span>Buy it again</span>
+                </button>
+            </div>
+
+            <div class="tracking">
+                <a href="tracking.html?orderId=${order.id}&productId=${product.id}">
+                    <button type="button">
+                    Track Package
+                    </button>
+                </a>
+                
+            </div>
       `;
     });
 
@@ -80,3 +99,11 @@ async function loadPage() {
 
   document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
 }
+loadPage()
+
+function estimatedDeliveryTime(deliveryOptionId) {
+    const deliveryDays = getDeliveryOption(deliveryOptionId).deliveryDays;
+    return dayjs().add(deliveryDays, 'days').toISOString();
+}
+
+

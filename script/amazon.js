@@ -127,7 +127,7 @@ export function renderProducts(filteredProducts){
 }
 renderProducts(filteredProducts);
 document.querySelector('.js-view-all-btn').addEventListener('click',() =>{
-    renderProducts(filteredProducts);
+    renderProducts(products);
 });
 document.querySelector('.js-mens-fashion-btn').addEventListener('click',() =>{
     mensFashion();

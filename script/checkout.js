@@ -198,49 +198,42 @@ document.querySelectorAll('.js-delivery-option').forEach((inputElement) =>{
 })
 };
 
-function renderPaymentSummary(){
-    let cost = 0 ;
+function renderPaymentSummary() {
+    let cost = 0;
     let shipping = 0;
 
-    cart.cartItems.forEach((cartItem) =>{
-        const productId =cartItem.productId;
+    cart.cartItems.forEach((cartItem) => {
+        const productId = cartItem.productId;
 
         let matchingProduct;
-        products.forEach((product) =>{
-            if(product.id === productId){
+        products.forEach((product) => {
+            if (product.id === productId) {
                 matchingProduct = product;
             }
         });
         cost += matchingProduct.price * cartItem.quantity;
 
         let deliveryOption;
-        deliveryOptions.forEach((option) =>{
-            if(cartItem.deliveryOptionId === option.id){
+        deliveryOptions.forEach((option) => {
+            if (cartItem.deliveryOptionId === option.id) {
                 deliveryOption = option;
             }
         });
         shipping += deliveryOption.price;
-        
-    })
-    
-    
-    
-    
-    let costBeforeTax = (cost)+(shipping);
+    });
 
-    let tax = (((costBeforeTax*100)*0.1)/100).toFixed(2);
+    let costBeforeTax = cost + shipping;
+    let tax = (((costBeforeTax * 100) * 0.1) / 100).toFixed(2);
     let total = (costBeforeTax + Number(tax)).toFixed(2);
-    let paymentSummaryHTML ='';
 
-    paymentSummaryHTML += 
-        `
+    let paymentSummaryHTML = `
         <div class="summary-title">Order Summary</div>
         <div class="summary-items-amount">
             <div>Items (${cart.calculateCart()}):</div>
             <div class="items-total">₹${cost}</div>
         </div>
         <div class="summary-shipping-amount">
-            <div >Shipping & Handling:</div>
+            <div>Shipping & Handling:</div>
             <div class="shipping-total">₹${shipping}</div>
         </div>
         <div class="summary-total-before-tax">
@@ -251,26 +244,79 @@ function renderPaymentSummary(){
             <div>Estimated tax (10%):</div>
             <div class="tax">₹${tax}</div>
         </div>
-
         <div class="summary-total">
             <div class="total-title">Order Total:</div>
             <div class="total">₹${total}</div>
         </div>
-
-            <button type="button" class="place-order js-place-order">Place your order</button>
+        <div class="payment-mode">
+            <div>
+                Pay on delivery
+                <input type="radio" name="paymentMethod" id="payment-method-cash">
+            </div>
+            <div>
+                Card Payment
+                <input type="radio" name="paymentMethod" id="payment-method-card">
+            </div>
         </div>
-        `
+        <div id="paypal-button-container" style="display: none;"></div>
+        <button type="button" class="place-order button-primary js-place-order" disabled>Place your order</button>
+    `;
+
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
-    document.querySelector('.js-place-order')
-    .addEventListener('click', () =>{
+    
+    const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+    const placeOrderButton = document.querySelector('.js-place-order');
+    const paypalContainer = document.querySelector('#paypal-button-container');
+    let paypalInitialized = false; 
+
+    
+    paymentMethods.forEach((radio) => {
+        radio.addEventListener('change', () => {
+            if (radio.id === 'payment-method-cash') {
+                placeOrderButton.disabled = false;
+                placeOrderButton.style.display = 'block';
+                paypalContainer.style.display = 'none';
+            } else if (radio.id === 'payment-method-card') {
+                placeOrderButton.style.display = 'none';
+                paypalContainer.style.display = 'block';
+
+                
+                if (!paypalInitialized) {
+                    paypal.Buttons({
+                        createOrder: function (data, actions) {
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: {
+                                        value: total,
+                                    }
+                                }]
+                            });
+                        },
+                        onApprove: function (data, actions) {
+                            return actions.order.capture().then(function (details) {
+                                alert('Transaction completed by ' + details.payer.name.given_name);
+                            });
+                        }
+                    }).render('#paypal-button-container'); 
+                    paypalInitialized = true;
+                }
+            }
+        });
+    });
+
+    
+    placeOrderButton.addEventListener('click', () => {
         const order = new Orders(`${total}`);
         addOrder(order);
         cart.cartItems = [];
-        cart.saveToStorage()
+        cart.saveToStorage();
         window.location.href = 'orders.html';
     });
 }
+
+
+
 
 
 

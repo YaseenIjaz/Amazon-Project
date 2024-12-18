@@ -18,11 +18,12 @@ class Product{
   price;
 
   constructor(productDetails){
-    this.id = productDetails.id
-    this.image = productDetails.image
-    this.name = productDetails.name
-    this.rating = productDetails.rating
-    this.price = productDetails.price
+    this.id = productDetails.id;
+    this.image = productDetails.image;
+    this.name = productDetails.name;
+    this.rating = productDetails.rating;
+    this.price = productDetails.price;
+    this.keywords = productDetails.keywords;
   }
 
   getStarsUrl(){
@@ -44,7 +45,8 @@ export const products = [
         "socks",
         "sports",
         "apparel"
-      ]
+      ],
+      type: 'sports'
     },
     {
       id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
@@ -58,7 +60,8 @@ export const products = [
       keywords: [
         "sports",
         "basketballs"
-      ]
+      ],
+      type: 'sports'
     },
     {
       id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
@@ -74,7 +77,7 @@ export const products = [
         "apparel",
         "mens"
       ],
-      type: "clothing",
+      type: "mens-fashion",
       sizeChartLink: "images/images/clothing-size-chart.png"
     },
     {
@@ -90,7 +93,8 @@ export const products = [
         "toaster",
         "kitchen",
         "appliances"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
@@ -105,7 +109,8 @@ export const products = [
         "plates",
         "kitchen",
         "dining"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "8c9c52b5-5a19-4bcb-a5d1-158a74287c53",
@@ -119,7 +124,8 @@ export const products = [
       keywords: [
         "kitchen",
         "cookware"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "dd82ca78-a18b-4e2a-9250-31e67412f98d",
@@ -134,7 +140,8 @@ export const products = [
         "hoodies",
         "sweaters",
         "apparel"
-      ]
+      ],
+      type: 'mens'
     },
     {
       id: "77919bbe-0e56-475b-adde-4f24dfed3a04",
@@ -151,7 +158,8 @@ export const products = [
         "restroom",
         "towels",
         "bath towels"
-      ]
+      ],
+      type: 'bathroom'
     },
     {
       id: "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
@@ -165,7 +173,8 @@ export const products = [
       keywords: [
         "bathroom",
         "cleaning"
-      ]
+      ],
+      type: 'bathroom'
     },
     {
       id: "58b4fc92-e98c-42aa-8c55-b6b79996769a",
@@ -180,7 +189,8 @@ export const products = [
         "shoes",
         "running shoes",
         "footwear"
-      ]
+      ],
+      type: 'mens-fashion'
     },
     {
       id: "5968897c-4d27-4872-89f6-5bcb052746d7",
@@ -192,14 +202,12 @@ export const products = [
       },
       price: 309,
       keywords: [
-        "robe",
-        "swimsuit",
-        "swimming",
-        "bathing",
-        "apparel"
+        "toys",
+        "rabbit",
+        "soft toy"
       ],
-      type: "clothing",
-      sizeChartLink: "images/images/clothing-size-chart.png"
+      type: "toys",
+      
     },
     {
       id: "aad29d11-ea98-41ee-9285-b916638cac4a",
@@ -213,7 +221,8 @@ export const products = [
       keywords: [
         "accessories",
         "shades"
-      ]
+      ],
+      type: 'mens-fashion'
     },
     {
       id: "04701903-bc79-49c6-bc11-1af7e3651358",
@@ -230,7 +239,8 @@ export const products = [
         "womens",
         "beach",
         "summer"
-      ]
+      ],
+      type: 'womens-fashion'
     },
     {
       id: "901eb2ca-386d-432e-82f0-6fb1ee7bf969",
@@ -245,7 +255,8 @@ export const products = [
         "bedroom",
         "curtains",
         "home"
-      ]
+      ],
+      type: 'home'
     },
     {
       id: "82bb68d7-ebc9-476a-989c-c78a40ee5cd9",
@@ -260,7 +271,8 @@ export const products = [
         "shorts",
         "apparel",
         "mens"
-      ]
+      ],
+      type: 'mens-fashion'
     },
     {
       id: "c2a82c5e-aff4-435f-9975-517cfaba2ece",
@@ -275,7 +287,8 @@ export const products = [
         "water boiler",
         "appliances",
         "kitchen"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
@@ -292,7 +305,8 @@ export const products = [
         "kitchen",
         "tissues box",
         "napkins"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "a82c6bac-3067-4e68-a5ba-d827ac0be010",
@@ -308,7 +322,8 @@ export const products = [
         "straw hats",
         "summer",
         "apparel"
-      ]
+      ],
+      type: 'mens-fashion'
     },
     {
       id: "e4f64a65-1377-42bc-89a5-e572d19252e2",
@@ -323,7 +338,8 @@ export const products = [
         "jewelry",
         "accessories",
         "womens"
-      ]
+      ],
+      type: 'womens-fashion'
     },
     {
       id: "b0f17cc5-8b40-4ca5-9142-b61fe3d98c85",
@@ -341,7 +357,7 @@ export const products = [
         "womens",
         "apparel"
       ],
-      type: "clothing",
+      type: "womens-fashion",
       sizeChartLink: "images/images/clothing-size-chart.png"
     },
     {
@@ -357,7 +373,8 @@ export const products = [
         "bathmat",
         "bathroom",
         "home"
-      ]
+      ],
+      type: 'home'
     },
     {
       id: "4f4fbcc2-4e72-45cc-935c-9e13d79cc57f",
@@ -373,7 +390,8 @@ export const products = [
         "flats",
         "womens",
         "footwear"
-      ]
+      ],
+      type: 'womens-fashion'
     },
     {
       id: "8b5a2ee1-6055-422a-a666-b34ba28b76d4",
@@ -390,7 +408,7 @@ export const products = [
         "apparel",
         "mens"
       ],
-      type: "clothing",
+      type: "mens-fashion",
       sizeChartLink: "images/images/clothing-size-chart.png"
     },
     {
@@ -407,7 +425,8 @@ export const products = [
         "bins",
         "cans",
         "kitchen"
-      ]
+      ],
+      type: 'home'
     },
     {
       id: "19c6a64a-5463-4d45-9af8-e41140a4100c",
@@ -424,7 +443,8 @@ export const products = [
         "sheets",
         "covers",
         "home"
-      ]
+      ],
+      type: 'sports'
     },
     {
       id: "d2785924-743d-49b3-8f03-ec258e640503",
@@ -442,7 +462,8 @@ export const products = [
         "tuques",
         "apparel",
         "womens"
-      ]
+      ],
+      type: 'womens-fashion'
     },
     {
       id: "ee1f7c56-f977-40a4-9642-12ba5072e2b0",
@@ -457,7 +478,8 @@ export const products = [
         "pants",
         "apparel",
         "mens"
-      ]
+      ],
+      type: 'mens-fashion'
     },
     {
       id: "1c079479-8586-494f-ab53-219325432536",
@@ -473,7 +495,8 @@ export const products = [
         "running shoes",
         "footwear",
         "mens"
-      ]
+      ],
+      type: 'mens-fashion'
     },
     {
       id: "4df68c27-fd59-4a6a-bbd1-e754ddb6d53c",
@@ -489,7 +512,8 @@ export const products = [
         "glasses",
         "accessories",
         "shades"
-      ]
+      ],
+      type: 'mens-fashion'
     },
     {
       id: "4e37dd03-3b23-4bc6-9ff8-44e112a92c64",
@@ -503,7 +527,8 @@ export const products = [
       keywords: [
         "cooking set",
         "kitchen"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "a434b69f-1bc1-482d-9ce7-cd7f4a66ce8d",
@@ -519,7 +544,8 @@ export const products = [
         "washroom",
         "mirrors",
         "home"
-      ]
+      ],
+      type: 'home'
     },
     {
       id: "a45cfa0a-66d6-4dc7-9475-e2b01595f7d7",
@@ -536,7 +562,8 @@ export const products = [
         "jogging",
         "apparel",
         "womens"
-      ]
+      ],
+      type: 'womens-fashion'
     },
     {
       id: "d339adf3-e004-4c20-a120-40e8874c66cb",
@@ -550,7 +577,8 @@ export const products = [
       keywords: [
         "accessories",
         "womens"
-      ]
+      ],
+      type: 'womens-fasionn'
     },
     {
       id: "d37a651a-d501-483b-aae6-a9659b0757a0",
@@ -565,7 +593,8 @@ export const products = [
         "boxes",
         "food containers",
         "kitchen"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "0d7f9afa-2efe-4fd9-b0fd-ba5663e0a524",
@@ -580,7 +609,8 @@ export const products = [
         "coffeemakers",
         "kitchen",
         "appliances"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "02e3a47e-dd68-467e-9f71-8bf6f723fdae",
@@ -594,7 +624,8 @@ export const products = [
       keywords: [
         "bedroom",
         "home"
-      ]
+      ],
+      type: 'home'
     },
     {
       id: "8a53b080-6d40-4a65-ab26-b24ecf700bce",
@@ -609,7 +640,8 @@ export const products = [
         "bathroom",
         "home",
         "towels"
-      ]
+      ],
+      type: 'home'
     },
     {
       id: "10ed8504-57db-433c-b0a3-fc71a35c88a1",
@@ -625,7 +657,8 @@ export const products = [
         "running shoes",
         "footwear",
         "womens"
-      ]
+      ],
+      type: 'womens-fashion'
     },
     {
       id: "77a845b1-16ed-4eac-bdf9-5b591882113d",
@@ -640,7 +673,8 @@ export const products = [
         "food blenders",
         "kitchen",
         "appliances"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "36c64692-677f-4f58-b5ec-0dc2cf109e27",
@@ -656,7 +690,8 @@ export const products = [
         "baking",
         "cookware",
         "kitchen"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "aaa65ef3-8d6f-4eb3-bc9b-a6ea49047d8f",
@@ -671,7 +706,8 @@ export const products = [
         "kitchen",
         "kitchen towels",
         "tissues"
-      ]
+      ],
+      type: 'kitchen'
     },
     {
       id: "bc2847e9-5323-403f-b7cf-57fde044a955",
@@ -687,7 +723,207 @@ export const products = [
         "hoodies",
         "apparel",
         "mens"
-      ]
+      ],
+      type: 'mens-fashion'
+    },
+    {
+      id: "002847e9-5323-405f-b7cf-57fde244a905",
+      image: "images/images/products/rubiks-cube-beginner-speed-cube.jpg",
+      name: "Rubiks Cube",
+      rating: {
+        stars: 4.5,
+        count: 352
+      },
+      price: 949,
+      keywords: [
+        "toys",
+        "cube",
+        "rubiks cube"
+      ],
+      type: 'toys'
+    },
+    {
+      id: "mc2047e9-6323-405f-b3cf-57fle244a905",
+      image: "images/images/products/gold-plated-bangles.jpg",
+      name: "Gold Plated Bangles",
+      rating: {
+        stars: 3.5,
+        count: 5100
+      },
+      price: 338,
+      keywords: [
+        "women",
+        "bangles",
+        "jewellery"
+      ],
+      type: 'womens-fashion'
+    },
+    {
+      id: "kc2847e0-2323-905f-b7cf-57mde244a904",
+      image: "images/images/products/noise-on-ear.jpg",
+      name: "Noise 4 Wireless On-Ear Headphones",
+      rating: {
+        stars: 4,
+        count: 782
+      },
+      price: 2499,
+      keywords: [
+        "headphones",
+        "noise",
+        "on ear"
+      ],
+      type: 'headphones'
+    },
+    {
+      id: "wc2887e9-5323-405z-07cf-57fde344a905",
+      image: "images/images/products/penguin-plush-toy-for-kids.jpg",
+      name: "Penguin Plush Toy",
+      rating: {
+        stars: 4,
+        count: 212
+      },
+      price: 549,
+      keywords: [
+        "toys",
+        "plush toy",
+        "soft toy",
+        "penguin"
+      ],
+      type: 'toys'
+    },
+    {
+      id: "wr2867e9-7323-405z-07cr-57fde304a105",
+      image: "images/images/products/handbag.jpg",
+      name: "Synthetic Leather Women's Satchel Bag | Ladies Purse Handbag",
+      rating: {
+        stars: 3.5,
+        count: 209
+      },
+      price: 1899,
+      keywords: [
+        "womens",
+        "purse",
+        "handbag",
+        "leather"
+      ],
+      type: 'womens-fashion'
+    },
+    {
+      id: "pc2837e9-6323-405z-07of-57fdc344a905",
+      image: "images/images/products/lego.jpg",
+      name: "Lego Porsche 911 Turbo",
+      rating: {
+        stars: 5,
+        count: 1100
+      },
+      price: 4224,
+      keywords: [
+        "toys",
+        "lego",
+        "porsche",
+        "car",
+        "cars"
+      ],
+      type: 'toys'
+    },
+    {
+      id: "wc2287e9-5323-405z-07cf-57fde344a905",
+      image: "images/images/products/noise-tws.jpg",
+      name: "Noise Buds VS104 Truly Wireless Earbuds",
+      rating: {
+        stars: 4,
+        count: 6700
+      },
+      price: 1199,
+      keywords: [
+        "noise",
+        "tws",
+        "headphones",
+        "headphone"
+      ],
+      type: 'headphone'
+    },
+    {
+      id: "zc4207e9-5323-405v-03cf-57fde344p905",
+      image: "images/images/products/georgette-saree.jpg",
+      name: "Women's Georgette Digital Printed Saree",
+      rating: {
+        stars: 3.5,
+        count: 1500
+      },
+      price: 929,
+      keywords: [
+        "saree",
+        "womens"
+      ],
+      type: 'womens-fashion'
+    },
+    {
+      id: "wc1887e9-5323-405z-07cf-67fde844a05",
+      image: "images/images/products/remote-control-car.jpg",
+      name: "Rechargebale Rotating & Rolling Small Stunt Car Toy with remote Controller & USB Cable",
+      rating: {
+        stars: 3.5,
+        count: 519
+      },
+      price: 369,
+      keywords: [
+        "toys",
+        "car",
+        "remote control"
+      ],
+      type: 'toys'
+    },
+    {
+      id: "wc4837e9-5323-435p-07cf-57fde348a905",
+      image: "images/images/products/boat-on-ear.jpg",
+      name: "boAt Rockerz 450 Pro Bluetooth On Ear Headphones",
+      rating: {
+        stars: 4,
+        count: 18700
+      },
+      price: 1999,
+      keywords: [
+        "boat",
+        "headphones",
+        "on ear",
+        "headphone"
+      ],
+      type: 'headphones'
+    },
+    {
+      id: "xc2887e9-5323-105z-07cf-57fie344a985",
+      image: "images/images/products/lego-harry-potter.jpg",
+      name: "LEGO Harry Potter Ollivanders & Madam Malkin's Robes Building Blcks Toys",
+      rating: {
+        stars: 4.5,
+        count: 113
+      },
+      price: 8799,
+      keywords: [
+        "toys",
+        "lego",
+        "obuilding blocks",
+        "harry potter"
+      ],
+      type: 'toys'
+    },
+    {
+      id: "72er87e9-5323-40t1-07cf-57fde344a905",
+      image: "images/images/products/boat-neckband.jpg",
+      name: "boAt Rockerz 255 Pro+ Bluetooth Neckband, Bluetooth Headphones",
+      rating: {
+        stars: 4,
+        count: 5200
+      },
+      price: 1049,
+      keywords: [
+        "boat",
+        "headphones",
+        "neckband",
+        "headphone"
+      ],
+      type: 'headphones'
     }
   ].map((productDetails) =>{
     return new Product(productDetails);

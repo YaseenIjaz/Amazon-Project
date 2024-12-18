@@ -18,6 +18,15 @@ export const deliveryOptions = [
     }
 ]
 
+export function getDeliveryOption(deliveryOptionId){
+    let deliveryOption;
+    deliveryOptions.forEach((option) => {
+        if(deliveryOptionId === option.id){
+            deliveryOption = option;
+        }
+    })
+    return deliveryOption
+}
 export function calculateDeliveryDate(deliveryOption) {
     const today = dayjs();
     const deliveryDate = today.add(
@@ -28,5 +37,5 @@ export function calculateDeliveryDate(deliveryOption) {
       'dddd, MMMM D'
     );
   
-    return dateString;
+    return dateString; 
 }

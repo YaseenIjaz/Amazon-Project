@@ -1,10 +1,12 @@
-import {getProduct, loadProductsFetch} from '../data/products.js';
-import {orders} from '../data/orders.js';
+import { getProduct,products } from '../data/products.js';
+import { orders } from '../data/orders.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-import formatCurrency from './utils/money.js';
+import '../data/orders.js'
+
+console.log(orders);
 
 async function loadPage() {
-  await loadProductsFetch();
+  
 
   let ordersHTML = '';
 
@@ -21,7 +23,7 @@ async function loadPage() {
             </div>
             <div class="order-total">
               <div class="order-header-label">Total:</div>
-              <div>$${formatCurrency(order.totalCostCents)}</div>
+              <div>$${(order.totalCostCents)}</div>
             </div>
           </div>
           <div class="order-header-right-section">

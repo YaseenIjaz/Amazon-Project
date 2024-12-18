@@ -1,6 +1,7 @@
 import { cart } from '../data/cart-class.js';
 import { products } from '../data/products.js';
-import { deliveryOptions,calculateDeliveryDate } from '../data/deliveryOptions.js';
+import { deliveryOptions,calculateDeliveryDate,getDeliveryOption } from '../data/deliveryOptions.js';
+import { Orders,addOrder } from '../data/orders.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 
@@ -39,13 +40,8 @@ cart.cartItems.forEach((cartItem) => {
     
     const deliveryOptionId = cartItem.deliveryOptionId;
     
-    let deliveryOption;
-
-    deliveryOptions.forEach((option) => {
-        if(deliveryOptionId === option.id){
-           deliveryOption = option;
-        }
-    })
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
+    
     
     const dateString = calculateDeliveryDate(deliveryOption);
 
@@ -267,26 +263,12 @@ function renderPaymentSummary(){
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
     document.querySelector('.js-place-order')
-    .addEventListener('click', async () => {
-      try {
-        const response = await fetch('https://supersimplebackend.dev/orders', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            cart: cart
-          })
-        });
-
-        const order = await response.json();
+    .addEventListener('click', () =>{
+        const order = new Orders(`${total}`);
         addOrder(order);
-
-      } catch (error) {
-        console.log('Unexpected error. Try again later.');
-      }
-
-      window.location.href = 'orders.html';
+        cart.cartItems = [];
+        cart.saveToStorage()
+        window.location.href = 'orders.html';
     });
 }
 
@@ -294,3 +276,5 @@ function renderPaymentSummary(){
 
 renderOrderSummary();
 renderPaymentSummary();
+
+

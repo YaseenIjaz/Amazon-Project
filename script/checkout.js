@@ -1,5 +1,5 @@
 import { cart } from '../data/cart-class.js';
-import { products } from '../data/products.js';
+import { products,getProduct } from '../data/products.js';
 import { deliveryOptions,calculateDeliveryDate,getDeliveryOption } from '../data/deliveryOptions.js';
 import { Orders,addOrder } from '../data/orders.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
@@ -27,16 +27,7 @@ function renderOrderSummary(){
 
 cart.cartItems.forEach((cartItem) => {
     const productId = cartItem.productId;
-    let matchingProduct;
-
-    products.forEach((product) => {
-        if(product.id === productId){
-            matchingProduct = product;
-        }
-        
-        
-        
-    });
+    const matchingProduct = getProduct(productId);
     
     const deliveryOptionId = cartItem.deliveryOptionId;
     
@@ -205,12 +196,8 @@ function renderPaymentSummary() {
     cart.cartItems.forEach((cartItem) => {
         const productId = cartItem.productId;
 
-        let matchingProduct;
-        products.forEach((product) => {
-            if (product.id === productId) {
-                matchingProduct = product;
-            }
-        });
+        const matchingProduct = getProduct(productId);
+        
         cost += matchingProduct.price * cartItem.quantity;
 
         let deliveryOption;

@@ -36,14 +36,14 @@ class Cart{
     let isMissing = false;
     this.cartItems.forEach((item) => {
         if(productId ===  item.productId){
-            item.quantity += quantity;
+            item.quantity += quantity || 1;
             isMissing =true;
         }
     })
     if(!isMissing){
         this.cartItems.push({
             productId,
-            quantity,
+            quantity: quantity || 1,
             deliveryOptionId : '1'
         })
     }  

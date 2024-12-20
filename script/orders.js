@@ -15,7 +15,7 @@ function updateCart() {
         cartItemsElement.innerHTML = `${cartQuantity}`;
     }
 }
-updateCart() 
+updateCart();
 
 function loadPage() {
   
@@ -77,7 +77,7 @@ function loadPage() {
                 </div>
                 <div class="quantity">Quantity: ${productDetails.quantity}</div>
 
-                <button type="button" class="buy-again">
+                <button type="button" class="buy-again button-primary js-buy-again" data-product-id="${product.id}">
                     <img src="images/images/icons/buy-again.png" alt="buy again">
                     <span>Buy it again</span>
                 </button>
@@ -98,7 +98,21 @@ function loadPage() {
   }
 
   document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
-}
+
+  document.querySelectorAll('.js-buy-again').forEach((button) => {
+    button.addEventListener('click', () => {
+      cart.addToCart(button.dataset.productId);
+      updateCart();
+      button.innerHTML = 'Added';
+      setTimeout(() => {
+        button.innerHTML = `
+          <img class="buy-again-icon" src="images/images/icons/buy-again.png">
+          <span class="buy-again-message">Buy it again</span>
+        `;
+      }, 1000);
+    });
+  });
+};
 loadPage()
 
 function estimatedDeliveryTime(deliveryOptionId) {

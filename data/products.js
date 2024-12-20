@@ -6,7 +6,13 @@ export function getProduct(productId) {
       matchingProduct = product;
     }
   });
-
+  if(!matchingProduct){
+    groceries.forEach(product =>{
+      if (product.id === productId) {
+        matchingProduct = product;
+      }
+    })
+  }
   return matchingProduct;
 }
 
@@ -971,10 +977,10 @@ export const groceries = [
     image: "images/images/products/biscuits.jpg",
     name: "Unibic Cookies, 75g(Pack Of 10)",
     rating: {
-      stars: 4.5,
-      count: 67093
+      stars: 4,
+      count: 19423
     },
-    price: 28,
+    price: 226,
     keywords: [
       "cookies",
       "groceries",

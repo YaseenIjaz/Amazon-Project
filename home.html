@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="images/images/amazon-mobile-logo.png" type="image/x-icon">
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/amazon-header.css">
-    <link rel="stylesheet" href="/styles/carousel.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="/styles/home.css">
     <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
@@ -15,7 +16,7 @@
 <body>
     <div class="header">
         <div class="header-left-section">
-            <a href="carousel-page.html" class="header-link">
+            <a href="home.html" class="header-link">
                 <img src="images/images/amazon-logo-white.png" alt="amazon" class="amazon-logo">
 
                 <img src="images/images/amazon-mobile-logo-white.png" alt="" class="amazon-mobile-logo">
@@ -23,8 +24,8 @@
         </div>
         
         <div class="header-middle-section">
-            <input type="text" class="search-bar" placeholder="Search">
-            <button type="button" class="search-button">
+            <input type="text" class="search-bar js-search-bar" placeholder="Search">
+            <button type="button" class="search-button  js-search-button">
                 <img src="images/images/icons/search-icon.png" alt="search">
             </button>
         </div>
@@ -45,6 +46,24 @@
             
         </div>
     </div>
+
+    <nav class="navigation-bar">
+        <div class="navigation-bar-categories">
+            <a href="amazon.html">
+                <button class="category-btn js-view-all-btn">View All</button>
+            </a>
+            <a href="amazon.html">
+                <button class="category-btn js-mens-fashion-btn" onclick="men">Men's Fashion</button>
+            </a>
+          
+          <button class="category-btn js-womens-fashion-btn">Women's Fashion</button>
+          <button class="category-btn js-toys-btn">Toys & Games</button>
+          <button class="category-btn js-headphones-btn">Bluetooth Headphones</button>
+          <button class="category-btn js-home-btn">Home Essentials</button>
+          <button class="category-btn js-kitchen-btn">Kitchen Essentials</button>
+          <button class="category-btn js-groceries-btn">Groceries</button> 
+        </div>
+    </nav>
 
     <main>
 
@@ -255,7 +274,7 @@
                             <div>biscuits </div>
                         </div>
                     </div>
-                    <a href="/html/amazon-view-all.html" class="link">Explore all</a>
+                    <a href="html/amazon-view-all.html" class="link">Explore all</a>
                 </div>
             </div>
 

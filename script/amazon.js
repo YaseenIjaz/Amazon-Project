@@ -4,6 +4,7 @@ import { mensFashion, womensFashion,toys,home,kitchen, headphones, groceriesPage
 
 
 
+
 function updateCart() {
     const cartQuantity = cart.calculateCart();
 
@@ -126,6 +127,7 @@ export function renderProducts(filteredProducts){
     
 }
 renderProducts(filteredProducts);
+
 document.querySelector('.js-view-all-btn').addEventListener('click',() =>{
     renderProducts(products);
 });

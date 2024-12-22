@@ -7,10 +7,11 @@
     <link rel="shortcut icon" href="images/images/amazon-mobile-logo.png" type="image/x-icon">
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/amazon-header.css">
+    <link rel="stylesheet" href="styles/carousel.css">
     <link rel="stylesheet" href="styles/navbar.css">
-    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="styles/home.css">
     <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
 
 </head>
 <body>
@@ -49,13 +50,9 @@
 
     <nav class="navigation-bar">
         <div class="navigation-bar-categories">
-            <a href="amazon.html">
-                <button class="category-btn js-view-all-btn">View All</button>
-            </a>
-            <a href="amazon.html">
-                <button class="category-btn js-mens-fashion-btn" onclick="men">Men's Fashion</button>
-            </a>
-          
+            
+          <button class="category-btn js-view-all-btn">View All</button>
+          <button class="category-btn js-mens-fashion-btn">Men's Fashion</button>
           <button class="category-btn js-womens-fashion-btn">Women's Fashion</button>
           <button class="category-btn js-toys-btn">Toys & Games</button>
           <button class="category-btn js-headphones-btn">Bluetooth Headphones</button>
@@ -69,27 +66,27 @@
 
         
         <div class="starting">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3500">
+            <div id="carouselExampleControls" class="carousel">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="images/images/products/carousel/t-shitrs-carousel.jpg" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="images/images/products/carousel/kitchen-carousel.jpg" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="images/images/products/carousel/toys-carousel.jpg" alt="Third slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="images/images/products/carousel/home-carousel.jpg" alt="Fourth slide">
-                  </div>
+                    <div class="carousel-item active">
+                        <img src="images/images/products/carousel/t-shitrs-carousel.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/images/products/carousel/kitchen-carousel.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/images/products/carousel/toys-carousel.jpg" alt="Third slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/images/products/carousel/home-carousel.jpg" alt="Fourth slide">
+                    </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
+                <button class="carousel-control-prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
     
             <div class="categories">
@@ -113,7 +110,7 @@
                             <div>Glassware</div>
                         </div>
                     </div>
-                    <a href="amazon.html" class="link">Explore all</a>
+                    <a href="#" class="link view-all-btn">Explore all</a>
                 </div>
               
                 <div class="category">
@@ -136,7 +133,7 @@
                             <div>Sunglasses</div>
                         </div>
                     </div>
-                    <a href="#" class="link">Explore all</a>
+                    <a href="#" class="link js-mens-fashion-btn">Explore all</a>
                 </div>
               
                 <div class="category">
@@ -159,7 +156,7 @@
                             <div>Zebronics</div>
                         </div>
                     </div>
-                    <a href="#" class="link">Explore all</a>
+                    <a href="#" class="link js-headphones-btn">Explore all</a>
                 </div>
     
                 <div class="category">
@@ -182,7 +179,7 @@
                             <div>Baking Set</div>
                         </div>
                     </div>
-                    <a href="/html/amazon-view-all.html" class="link">Explore all</a>
+                    <a href="#" class="link js-kitchen-btn">Explore all</a>
                 </div>
 
                 <div class="category">
@@ -205,7 +202,7 @@
                             <div>Ear Rings</div>
                         </div>
                     </div>
-                    <a href="#" class="link">Explore all</a>
+                    <a href="#" class="link js-womens-fashion-btn">Explore all</a>
                 </div>
               
                 <div class="category">
@@ -228,7 +225,7 @@
                             <div>Remote Contols</div>
                         </div>
                     </div>
-                    <a href="#" class="link">Explore all</a>
+                    <a href="#" class="link js-toys-btn">Explore all</a>
                 </div>
               
                 <div class="category">
@@ -251,7 +248,7 @@
                             <div>Clocks</div>
                         </div>
                     </div>
-                    <a href="#" class="link">Explore all</a>
+                    <a href="#" class="link js-home-btn">Explore all</a>
                 </div>
     
                 <div class="category">
@@ -274,7 +271,7 @@
                             <div>biscuits </div>
                         </div>
                     </div>
-                    <a href="html/amazon-view-all.html" class="link">Explore all</a>
+                    <a href="#" class="link js-groceries-btn">Explore all</a>
                 </div>
             </div>
 
@@ -283,53 +280,8 @@
         
     </main>
 
-    <footer  style="background-color: rgb(35, 47, 62); color: white;">
-        <div class="container p-5">
-            <div class="row">
-                <div class="col-3">
-                    <h5 class="mb-3">Get to Know Us</h5>
-                    <p><a class="nav-link text-white" href="#">About Amazon</a></p>
-                    <p><a class="nav-link text-white" href="">Careers</a></p>
-                    <p> <a class="nav-link text-white" href="">Press Releases</a></p>
-                </div>
-
-                <div class="col-3">
-                    <h5 class="mb-3">Connect With US</h5>
-                    <p><a class="nav-link text-white" href="#">Facebook</a></p>
-                    <p> <a class="nav-link text-white" href="">Twitter</a></p>
-                    <p><a class="nav-link text-white" href="">Instagram</a></p>
-                </div>
-
-                <div class="col-3">
-                    <h5 class="mb-3">Make Money With Us</h5>
-                    <p><a class="nav-link text-white" href="">Sell on Amazon</a></p>
-                    <p><a class="nav-link text-white" href="">Protect and Build Your Brand</a></p>
-                    <p><a class="nav-link text-white" href="">Supply to Amazon</a></p>
-                </div>
-
-                <div class="col-3">
-                    <h5 class="mb-3">Let US Help You</h5>
-                    <p><a class="nav-link text-white" href="">Your Account</a></p>
-                    <p><a class="nav-link text-white" href="">100% Purchase Protection</a></p>
-                    <p><a class="nav-link text-white" href="">Help</a></p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="p-3" style="background-color: rgb(19, 26, 34);">
-            <div class="d-flex justify-content-center align-items-center">
-                <span class="me-3">Conditions of Use & Sale</span>
-                <span class="me-3">Privacy Notice</span>
-                <span class="me-3">Interest-Based Ads</span>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
-                <p>© 2001-2024, Amazon.com, Inc. or its affiliates</p>
-            </div>
-
-            
-        </div>
-    </footer>
-    <script type="module" src="script/amazon.js"></script>
+    
+    <script type="module" src="script/home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     

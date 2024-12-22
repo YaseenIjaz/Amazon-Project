@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+<footer  style="background-color: rgb(35, 47, 62); color: white;">
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-3">
+                    <h5 class="mb-3">Get to Know Us</h5>
+                    <p><a class="nav-link text-white" href="#">About Amazon</a></p>
+                    <p><a class="nav-link text-white" href="">Careers</a></p>
+                    <p> <a class="nav-link text-white" href="">Press Releases</a></p>
+                </div>
+
+                <div class="col-3">
+                    <h5 class="mb-3">Connect With US</h5>
+                    <p><a class="nav-link text-white" href="#">Facebook</a></p>
+                    <p> <a class="nav-link text-white" href="">Twitter</a></p>
+                    <p><a class="nav-link text-white" href="">Instagram</a></p>
+                </div>
+
+                <div class="col-3">
+                    <h5 class="mb-3">Make Money With Us</h5>
+                    <p><a class="nav-link text-white" href="">Sell on Amazon</a></p>
+                    <p><a class="nav-link text-white" href="">Protect and Build Your Brand</a></p>
+                    <p><a class="nav-link text-white" href="">Supply to Amazon</a></p>
+                </div>
+
+                <div class="col-3">
+                    <h5 class="mb-3">Let US Help You</h5>
+                    <p><a class="nav-link text-white" href="">Your Account</a></p>
+                    <p><a class="nav-link text-white" href="">100% Purchase Protection</a></p>
+                    <p><a class="nav-link text-white" href="">Help</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="p-3" style="background-color: rgb(19, 26, 34);">
+            <div class="d-flex justify-content-center align-items-center">
+                <span class="me-3">Conditions of Use & Sale</span>
+                <span class="me-3">Privacy Notice</span>
+                <span class="me-3">Interest-Based Ads</span>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <p>© 2001-2024, Amazon.com, Inc. or its affiliates</p>
+            </div>
+
+            
+        </div>
+    </footer>

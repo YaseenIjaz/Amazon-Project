@@ -1,39 +1,23 @@
 main {
-    margin-top: 100px;
+    margin-top: 90px;
     background-color: whitesmoke;
     height: 1400px;
   }
-  .search-button{
-    height: 38px;
-  }
-  .search-button img{
-    margin-top: 0;
-  }
-  .navigation-bar{
-    padding: 20px 20px;
-  }
+
   .starting {
     position: relative;
     width: 100%;
     height: auto;
     background-color: whitesmoke;
   }
-  .carousel-control-next {
-    right: 50px;
-  }
+
   
-  .carousel-control-prev,
-  .carousel-control-next {
-    transform: translateY(-20%);
-  }
-  .carousel-item img {
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  }
+ 
+
   
   .categories {
     position: absolute; 
-    top: 38%; 
+    top: 37%; 
     left: 0;
     right: 0;
     display: grid;

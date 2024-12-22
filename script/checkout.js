@@ -192,27 +192,27 @@ document.querySelectorAll('.js-delivery-option').forEach((inputElement) =>{
 function renderPaymentSummary() {
     let cost = 0;
     let shipping = 0;
-
+  
     cart.cartItems.forEach((cartItem) => {
-        const productId = cartItem.productId;
-
-        const matchingProduct = getProduct(productId);
-        
-        cost += matchingProduct.price * cartItem.quantity;
-
-        let deliveryOption;
-        deliveryOptions.forEach((option) => {
-            if (cartItem.deliveryOptionId === option.id) {
-                deliveryOption = option;
-            }
-        });
-        shipping += deliveryOption.price;
+      const productId = cartItem.productId;
+  
+      const matchingProduct = getProduct(productId);
+  
+      cost += matchingProduct.price * cartItem.quantity;
+  
+      let deliveryOption;
+      deliveryOptions.forEach((option) => {
+        if (cartItem.deliveryOptionId === option.id) {
+          deliveryOption = option;
+        }
+      });
+      shipping += deliveryOption.price;
     });
-
+  
     let costBeforeTax = cost + shipping;
     let tax = (((costBeforeTax * 100) * 0.1) / 100).toFixed(2);
     let total = (costBeforeTax + Number(tax)).toFixed(2);
-
+  
     let paymentSummaryHTML = `
         <div class="summary-title">Order Summary</div>
         <div class="summary-items-amount">
@@ -241,68 +241,120 @@ function renderPaymentSummary() {
                 <input type="radio" name="paymentMethod" id="payment-method-cash">
             </div>
             <div>
-                Card Payment
+                Online Payment
                 <input type="radio" name="paymentMethod" id="payment-method-card">
             </div>
         </div>
-        <div id="paypal-button-container" style="display: none;"></div>
+        <div id="gpay-button" class="gpay-button-container" style="display: none;"></div>
         <button type="button" class="place-order button-primary js-place-order" disabled>Place your order</button>
     `;
-
+  
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
-
-    
+  
     const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
     const placeOrderButton = document.querySelector('.js-place-order');
-    const paypalContainer = document.querySelector('#paypal-button-container');
-    let paypalInitialized = false; 
-
-    
+    const gpayButtonContainer = document.querySelector('#gpay-button');
+    let gpayInitialized = false;
+  
+    // Listen to changes in payment methods
     paymentMethods.forEach((radio) => {
-        radio.addEventListener('change', () => {
-            if (radio.id === 'payment-method-cash') {
-                placeOrderButton.disabled = false;
-                placeOrderButton.style.display = 'block';
-                paypalContainer.style.display = 'none';
-            } else if (radio.id === 'payment-method-card') {
-                placeOrderButton.style.display = 'none';
-                paypalContainer.style.display = 'block';
-
-                
-                if (!paypalInitialized) {
-                    paypal.Buttons({
-                        createOrder: function (data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: total,
-                                    }
-                                }]
-                            });
-                        },
-                        onApprove: function (data, actions) {
-                            return actions.order.capture().then(function (details) {
-                                alert('Transaction completed by ' + details.payer.name.given_name);
-                            });
-                        }
-                    }).render('#paypal-button-container'); 
-                    paypalInitialized = true;
-                }
-            }
-        });
+      radio.addEventListener('change', () => {
+        if (radio.id === 'payment-method-cash') {
+          // Pay on delivery selected
+          placeOrderButton.disabled = false;
+          placeOrderButton.style.display = 'block';
+          
+          gpayButtonContainer.style.display = 'none';
+        } else if (radio.id === 'payment-method-card') {
+          // Card payment selected
+          placeOrderButton.style.display = 'none';
+          gpayButtonContainer.style.display = 'block';
+  
+          if (!gpayInitialized) {
+            initializeGooglePay(total);
+            gpayInitialized = true;
+          }
+        }
+      });
     });
-
-    
+  
+    // Place order event
     placeOrderButton.addEventListener('click', () => {
-        const order = new Orders(`${total}`);
-        addOrder(order);
-        cart.cartItems = [];
-        cart.saveToStorage();
-        window.location.href = 'orders.html';
+      const order = new Orders(`${total}`);
+      addOrder(order);
+      cart.cartItems = [];
+      cart.saveToStorage();
+      window.location.href = 'orders.html';
     });
-}
-
-
+  }
+  
+  function initializeGooglePay(total) {
+    const paymentsClient = new google.payments.api.PaymentsClient({
+      environment: "TEST", // Test environment
+    });
+  
+    const paymentRequest = {
+      apiVersion: 2,
+      apiVersionMinor: 0,
+      allowedPaymentMethods: [
+        {
+          type: "CARD",
+          parameters: {
+            allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+            allowedCardNetworks: ["VISA", "MASTERCARD"],
+          },
+          tokenizationSpecification: {
+            type: "PAYMENT_GATEWAY",
+            parameters: {
+              gateway: "example", // Test gateway
+              gatewayMerchantId: "exampleMerchantId", // Mock merchant ID
+            },
+          },
+        },
+      ],
+      merchantInfo: {
+        merchantId: "exampleMerchantId",
+        merchantName: "Example Merchant",
+      },
+      transactionInfo: {
+        totalPriceStatus: "FINAL",
+        totalPrice: total,
+        currencyCode: "INR",
+        countryCode: "US",
+      },
+    };
+  
+    // Check if Google Pay is ready to pay
+    paymentsClient
+      .isReadyToPay({
+        apiVersion: 2,
+        apiVersionMinor: 0,
+        allowedPaymentMethods: paymentRequest.allowedPaymentMethods,
+      })
+      .then((response) => {
+        if (response.result) {
+          const gpayButton = paymentsClient.createButton({
+            onClick: () => {
+              paymentsClient
+                .loadPaymentData(paymentRequest)
+                .then((paymentData) => {
+                  console.log("Payment Successful:", paymentData);
+                })
+                .catch((err) => {
+                  console.error("Payment Failed:", err);
+                });
+            },
+          });
+          document.getElementById('gpay-button').appendChild(gpayButton);
+        } else {
+          console.error("Google Pay is not ready to pay.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error checking readiness:", err);
+      });
+  }
+  
 
 
 

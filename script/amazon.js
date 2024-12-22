@@ -128,6 +128,8 @@ export function renderProducts(filteredProducts){
 }
 renderProducts(filteredProducts);
 
+
+
 document.querySelector('.js-view-all-btn').addEventListener('click',() =>{
     renderProducts(products);
 });

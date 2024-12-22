@@ -94,6 +94,17 @@ class Cart{
 
      this.saveToStorage();
   }
+};
+
+export function updateCart() {
+  const cartQuantity = cart.calculateCart();
+
+  const cartItemsElement = document.querySelector('.js-cart-quantity');
+  if (cartQuantity === 0) {
+      cartItemsElement.innerHTML = `0`;
+  } else {
+      cartItemsElement.innerHTML = `${cartQuantity}`;
+  }
 }
 
 export const cart = new Cart('cart-oop');

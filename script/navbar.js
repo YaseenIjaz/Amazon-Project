@@ -1,4 +1,4 @@
- import {renderProducts,displayAddedMsg} from './amazon.js';
+ import {renderProducts} from './home.js';
  import { products,groceries } from '../data/products.js';
 
 export function mensFashion(){

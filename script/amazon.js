@@ -4,7 +4,7 @@ import { mensFashion, womensFashion,toys,home,kitchen, headphones, groceriesPage
 
 
 
-
+ 
 function updateCart() {
     const cartQuantity = cart.calculateCart();
 
@@ -17,7 +17,7 @@ function updateCart() {
 }
 updateCart();
 
-export function displayAddedMsg(productId){
+ function displayAddedMsg(productId){
     const addedMsg = document.querySelector(`.js-added-to-cart-${productId}`);
     addedMsg.classList.add ('added-to-cart-visible');
 
@@ -51,7 +51,7 @@ const url = new URL(window.location.href);
           product.name.toLowerCase().includes(search.toLowerCase());
     });
   }
-export function renderProducts(filteredProducts){
+function renderProducts(filteredProducts){
     let productHTML = '';
     filteredProducts.forEach((product) => {
         productHTML +=  `

@@ -1,73 +1,10 @@
-import { cart } from '../data/cart-class.js';
+import { cart, updateCart } from '../data/cart-class.js';
 import {groceries, products} from '../data/products.js';
+import { mensFashion, womensFashion,toys,home,kitchen, headphones, groceriesPage } from './navbar.js';
 
-
- function mensFashion(){
-    document.querySelector('.product-grid').innerHTML = '';
-
-    const filteredProducts = products.filter((product) => product.type === 'mens-fashion');
-
-    renderProducts(filteredProducts);
- };
-
-  function womensFashion(){
-    document.querySelector('.product-grid').innerHTML = '';
-
-    const filteredProducts = products.filter((product) => product.type === 'womens-fashion');
-
-    renderProducts(filteredProducts);
- };
-  function toys(){
-   document.querySelector('.product-grid').innerHTML = '';
-
-   const filteredProducts = products.filter((product) => product.type === 'toys');
-
-   renderProducts(filteredProducts);
-};
- function headphones(){
-   document.querySelector('.product-grid').innerHTML = '';
-
-   const filteredProducts = products.filter((product) => product.type === 'headphones');
-
-   renderProducts(filteredProducts);
-};
- function home(){
-   document.querySelector('.product-grid').innerHTML = '';
-
-   const filteredProducts = products.filter((product) => product.type === 'home');
-
-   renderProducts(filteredProducts);
-};
- function kitchen(){
-   document.querySelector('.product-grid').innerHTML = '';
-
-   const filteredProducts = products.filter((product) => product.type === 'kitchen');
-
-   renderProducts(filteredProducts);
-};
-
- function groceriesPage(){
-   document.querySelector('.product-grid').innerHTML = '';
-
-   const filteredProducts = groceries;
-
-   renderProducts(filteredProducts)
-}
-
-
-function updateCart() {
-    const cartQuantity = cart.calculateCart();
-
-    const cartItemsElement = document.querySelector('.js-cart-quantity');
-    if (cartQuantity === 0) {
-        cartItemsElement.innerHTML = `0`;
-    } else {
-        cartItemsElement.innerHTML = `${cartQuantity}`;
-    }
-}
 updateCart();
 
-export function displayAddedMsg(productId){
+function displayAddedMsg(productId){
     const addedMsg = document.querySelector(`.js-added-to-cart-${productId}`);
     addedMsg.classList.add ('added-to-cart-visible');
 
@@ -101,7 +38,7 @@ const url = new URL(window.location.href);
           product.name.toLowerCase().includes(search.toLowerCase());
     });
   }
- function renderProducts(filteredProducts){
+export function renderProducts(filteredProducts){
     let productHTML = '';
     filteredProducts.forEach((product) => {
         productHTML +=  `
@@ -162,331 +99,56 @@ const url = new URL(window.location.href);
             displayAddedMsg(productId);
              
         })
-    })
-    
-    document.querySelector('.js-search-button').addEventListener('click', () => {
-          const search = document.querySelector('.js-search-bar').value;
-          window.location.href = `amazon.html?search=${search}`;
-        });
-    document.querySelector('.js-search-bar').addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-        const searchTerm = document.querySelector('.js-search-bar').value;
-        window.location.href = `amazon.html?search=${searchTerm}`;
-        }
-    });
-    
+    })   
 }
+document.querySelector('.js-search-button').addEventListener('click', () => {
+    const search = document.querySelector('.js-search-bar').value;
+    window.location.href = `amazon.html?search=${search}`;
+  });
+document.querySelector('.js-search-bar').addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+  const searchTerm = document.querySelector('.js-search-bar').value;
+  window.location.href = `amazon.html?search=${searchTerm}`;
+  }
+});
 
-
-
-
-document.querySelector('.js-view-all-btn').addEventListener('click',() =>{
+function handleButtonClick(callback) {
     const mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
     const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
     if (existingHomeCSS) {
         existingHomeCSS.remove();
     }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
-            mainElement.innerHTML = `<div class="product-grid"></div>`;
-            renderProducts(products);
-        };
-    } else {
-        mainElement.innerHTML = `<div class="product-grid"></div>`;
-        renderProducts(products);
-    }
-});
+    const existingCSS = document.querySelector(`link[href="styles/amazon.css"]`);
 
-document.querySelector('.view-all-btn').addEventListener('click',() =>{
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-    if (existingHomeCSS) {
-        existingHomeCSS.remove();
-    }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
+    if (!existingCSS) {
+        const newCSS = document.createElement('link');
+        newCSS.rel = 'stylesheet';
+        newCSS.href = `styles/amazon.css`;
+        document.head.appendChild(newCSS);
+        newCSS.onload = () => {
             mainElement.innerHTML = `<div class="product-grid"></div>`;
-            renderProducts(products);
+            callback();
         };
     } else {
         mainElement.innerHTML = `<div class="product-grid"></div>`;
-        renderProducts(products);
+        callback();
     }
-});
-
-document.querySelector('.js-mens-fashion-btn').addEventListener('click',() =>{
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-    if (existingHomeCSS) {
-        existingHomeCSS.remove();
-    }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
-            mainElement.innerHTML = `<div class="product-grid"></div>`;
-            mensFashion()
-        };
-    } else {
-        mainElement.innerHTML = `<div class="product-grid"></div>`;
-        mensFashion()
-    }
-});
-
-document.querySelector('.js-womens-fashion-btn').addEventListener('click',() =>{
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-    if (existingHomeCSS) {
-        existingHomeCSS.remove();
-    }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
-            mainElement.innerHTML = `<div class="product-grid"></div>`;
-            womensFashion();
-        };
-    } else {
-        mainElement.innerHTML = `<div class="product-grid"></div>`;
-        womensFashion();
-    }
-});
-
-document.querySelector('.js-toys-btn').addEventListener('click',() =>{
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-    if (existingHomeCSS) {
-        existingHomeCSS.remove();
-    }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
-            mainElement.innerHTML = `<div class="product-grid"></div>`;
-            toys();
-        };
-    } else {
-        mainElement.innerHTML = `<div class="product-grid"></div>`;
-        toys();
-    }
-});
-document.querySelector('.js-headphones-btn').addEventListener('click',() =>{
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-    if (existingHomeCSS) {
-        existingHomeCSS.remove();
-    }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
-            mainElement.innerHTML = `<div class="product-grid"></div>`;
-            headphones();
-        };
-    } else {
-        mainElement.innerHTML = `<div class="product-grid"></div>`;
-        headphones();
-    }
-});
-document.querySelector('.js-home-btn').addEventListener('click',() =>{
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-    if (existingHomeCSS) {
-        existingHomeCSS.remove();
-    }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
-            mainElement.innerHTML = `<div class="product-grid"></div>`;
-            home();
-        };
-    } else {
-        mainElement.innerHTML = `<div class="product-grid"></div>`;
-        home();
-    }
-});
-document.querySelector('.js-kitchen-btn').addEventListener('click',() =>{
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-    if (existingHomeCSS) {
-        existingHomeCSS.remove();
-    }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
-            mainElement.innerHTML = `<div class="product-grid"></div>`;
-            kitchen();
-        };
-    } else {
-        mainElement.innerHTML = `<div class="product-grid"></div>`;
-        kitchen();
-    }
-});
-document.querySelector('.js-groceries-btn').addEventListener('click',() =>{
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-    if (existingHomeCSS) {
-        existingHomeCSS.remove();
-    }
-    const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-    
-    if (!existingAmazonCSS) {
-        const amazonCSS = document.createElement('link');
-        amazonCSS.rel = 'stylesheet';
-        amazonCSS.href = 'styles/amazon.css';
-        document.head.appendChild(amazonCSS);
-        amazonCSS.onload = () => {
-            mainElement.innerHTML = `<div class="product-grid"></div>`;
-            groceriesPage();
-        };
-    } else {
-        mainElement.innerHTML = `<div class="product-grid"></div>`;
-        groceriesPage();
-    }
-});
-
-
-let currentIndex = 0;
-let interval;
-
-function updateSlidePosition() {
-    const carouselInner = document.querySelector('.carousel-inner');
-    const items = document.querySelectorAll('.carousel-item');
-    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
-
-function moveSlide(direction) {
-    clearInterval(interval); // Stop the auto-slide temporarily
-    const items = document.querySelectorAll('.carousel-item');
-    const itemCount = items.length;
-
-    currentIndex = (currentIndex + direction + itemCount) % itemCount;
-
-    updateSlidePosition();
-    startAutoSlide(); // Restart auto-slide
-}
-
-function startAutoSlide() {
-    interval = setInterval(() => {
-        const items = document.querySelectorAll('.carousel-item');
-        const itemCount = items.length;
-
-        currentIndex = (currentIndex + 1) % itemCount; // Cycle through slides seamlessly
-        updateSlidePosition();
-    }, 3500);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    startAutoSlide();
-});
-
-document.querySelector('.carousel-control-prev').addEventListener('click',() =>{
-    moveSlide(-1)
-})
-document.querySelector('.carousel-control-next').addEventListener('click',() =>{
-    moveSlide(1)
-})
-
-
-
-// document.querySelector('.navigation-bar-categories').addEventListener('click', async (event) => {
-//   if (event.target.classList.contains('category-btn')) {
-//       const btnClass = event.target.classList;
-
-//       try {
-          
-//           const response = await fetch('./amazon.html');
-//           if (!response.ok) throw new Error('Failed to load amazon.html');
-//           const html = await response.text();
-
-          
-//           const parser = new DOMParser();
-//           const doc = parser.parseFromString(html, 'text/html');
-//           const amazonMain = doc.querySelector('main');
-
-          
-//           const homeMain = document.querySelector('main');
-//           homeMain.innerHTML = 
-//            `<div class="product-grid">
-//             ${renderAmazonProducts()}
-//            </div>`;
-           
-
-          
-//           const existingHomeCSS = document.querySelector('link[href="styles/home.css"]');
-//           const existingAmazonCSS = document.querySelector('link[href="styles/amazon.css"]');
-
-//           if (btnClass.contains('js-mens-fashion-btn') || btnClass.contains('js-womens-fashion-btn')) {
-//               if (existingHomeCSS) existingHomeCSS.remove(); 
-//               if (!existingAmazonCSS) {
-//                   const amazonCSS = document.createElement('link');
-//                   amazonCSS.rel = 'stylesheet';
-//                   amazonCSS.href = 'styles/amazon.css';
-//                   document.head.appendChild(amazonCSS); 
-//               }
-//               mensFashion(); 
-//           } else {
-              
-//               if (existingAmazonCSS) existingAmazonCSS.remove();
-//               if (!existingHomeCSS) {
-//                   const homeCSS = document.createElement('link');
-//                   homeCSS.rel = 'stylesheet';
-//                   homeCSS.href = 'styles/home.css';
-//                   document.head.appendChild(homeCSS); 
-//               }
-//           }
-//       } catch (error) {
-//           console.error('Error loading content:', error);
-//       }
-//   }
-// });
-
-
+document.querySelector('.js-view-all-btn').addEventListener('click', () => handleButtonClick(() => renderProducts(products)));
+document.querySelector('.view-all-btn').addEventListener('click', () => handleButtonClick(() => renderProducts(products)));
+document.querySelector('.js-mens-fashion-btn').addEventListener('click', () => handleButtonClick(mensFashion));
+document.querySelector('.mens-fashion-btn').addEventListener('click', () => handleButtonClick(mensFashion));
+document.querySelector('.js-womens-fashion-btn').addEventListener('click', () => handleButtonClick(womensFashion));
+document.querySelector('.womens-fashion-btn').addEventListener('click', () => handleButtonClick(womensFashion));
+document.querySelector('.js-toys-btn').addEventListener('click', () => handleButtonClick(toys));
+document.querySelector('.toys-btn').addEventListener('click', () => handleButtonClick(toys));
+document.querySelector('.js-headphones-btn').addEventListener('click', () => handleButtonClick(headphones));
+document.querySelector('.headphones-btn').addEventListener('click', () => handleButtonClick(headphones));
+document.querySelector('.js-home-btn').addEventListener('click', () => handleButtonClick(home));
+document.querySelector('.home-btn').addEventListener('click', () => handleButtonClick(home));
+document.querySelector('.kitchen-btn').addEventListener('click', () => handleButtonClick(kitchen));
+document.querySelector('.js-kitchen-btn').addEventListener('click', () => handleButtonClick(kitchen));
+document.querySelector('.js-groceries-btn').addEventListener('click', () => handleButtonClick(groceriesPage));
+document.querySelector('.groceries-btn').addEventListener('click', () => handleButtonClick(groceriesPage));
 

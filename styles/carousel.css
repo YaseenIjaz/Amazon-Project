@@ -62,3 +62,18 @@
     mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   }
+
+@media (max-width: 775px){
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon{
+        height: 25px;
+        width: 25px;
+    }
+
+    .carousel-control-prev {
+        left: 30px;
+    }  
+    .carousel-control-next {
+        right: 30px;
+      }
+}

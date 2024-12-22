@@ -20,27 +20,10 @@ function displayAddedMsg(productId){
     addedMsgTimeout[productId] = timeoutId;
 }
 
-const url = new URL(window.location.href);
-  const search = url.searchParams.get('search');
 
-  let filteredProducts = products;
-  if (search) {
-    filteredProducts = products.filter((product) => {
-        let matchingKeyword = false;
-
-        product.keywords.forEach((keyword) => {
-          if (keyword.toLowerCase().includes(search.toLowerCase())) {
-            matchingKeyword = true;
-          }
-        });
-  
-        return matchingKeyword ||
-          product.name.toLowerCase().includes(search.toLowerCase());
-    });
-  }
-export function renderProducts(filteredProducts){
+export function renderProducts(products){
     let productHTML = '';
-    filteredProducts.forEach((product) => {
+    products.forEach((product) => {
         productHTML +=  `
                 <div class="products">
                     <div class="image-container">
@@ -101,16 +84,52 @@ export function renderProducts(filteredProducts){
         })
     })   
 }
+
 document.querySelector('.js-search-button').addEventListener('click', () => {
-    const search = document.querySelector('.js-search-bar').value;
-    window.location.href = `amazon.html?search=${search}`;
-  });
-document.querySelector('.js-search-bar').addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-  const searchTerm = document.querySelector('.js-search-bar').value;
-  window.location.href = `amazon.html?search=${searchTerm}`;
-  }
+    const searchTerm = document.querySelector('.js-search-bar').value.trim();
+    if (searchTerm) {
+        const filteredProducts = products.filter((product) => {
+            let matchingKeyword = false;
+
+            product.keywords.forEach((keyword) => {
+                if (keyword.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    matchingKeyword = true;
+                }
+            });
+
+            return (
+                matchingKeyword ||
+                product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+        handleButtonClick(() => renderProducts(filteredProducts));
+    }
 });
+
+
+document.querySelector('.js-search-bar').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        const searchTerm = document.querySelector('.js-search-bar').value.trim();
+        if (searchTerm) {
+            const filteredProducts = products.filter((product) => {
+                let matchingKeyword = false;
+
+                product.keywords.forEach((keyword) => {
+                    if (keyword.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        matchingKeyword = true;
+                    }
+                });
+
+                return (
+                    matchingKeyword ||
+                    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            });
+            handleButtonClick(() => renderProducts(filteredProducts));
+        }
+    }
+});
+
 
 function handleButtonClick(callback) {
     const mainElement = document.querySelector('main');

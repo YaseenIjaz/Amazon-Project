@@ -1,5 +1,6 @@
 import { cart, updateCart } from '../data/cart-class.js';
 import {groceries, products} from '../data/products.js';
+import { loggedInUser } from '../data/userDetails.js';
 import { mensFashion, womensFashion,toys,home,kitchen, headphones, groceriesPage } from './navbar.js';
 
 updateCart();
@@ -143,7 +144,7 @@ function handleButtonClick(callback) {
     if (!existingCSS) {
         const newCSS = document.createElement('link');
         newCSS.rel = 'stylesheet';
-        newCSS.href = `styles/amazon.css`;
+        newCSS.href = 'styles/amazon.css';
         document.head.appendChild(newCSS);
         newCSS.onload = () => {
             mainElement.innerHTML = `<div class="product-grid"></div>`;
@@ -154,6 +155,8 @@ function handleButtonClick(callback) {
         callback();
     }
 }
+
+document.querySelector('.js-user-name').innerHTML = `<span class="hello">Hello,</span> <span class="name">${(loggedInUser.name.split(" ")[0])}</span>`;
 document.querySelector('.js-view-all-btn').addEventListener('click', () => handleButtonClick(() => renderProducts(products)));
 document.querySelector('.view-all-btn').addEventListener('click', () => handleButtonClick(() => renderProducts(products)));
 document.querySelector('.js-mens-fashion-btn').addEventListener('click', () => handleButtonClick(mensFashion));

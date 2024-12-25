@@ -85,6 +85,7 @@ body{
     border-radius: 5px 0 0 5px;
     text-indent: 15px;
     font-size: 15px;
+    width: 0;
 }
 
 .search-bar:focus{
@@ -99,6 +100,7 @@ body{
     padding: 6px;
     background-color: rgb(254, 189, 105);
     border-radius: 0 5px 5px 0;
+    flex-shrink: 0;
 }
 
 .search-button img{
@@ -108,14 +110,53 @@ body{
 }
 
 .header-right-section{
-    width: 180px;
+    width: 340px;
     display: flex;
     flex-shrink: 0;
     justify-content: end;
-    margin-left: 10px;
-    
-    
+    margin-left: 12px; 
 
+}
+@media (max-width:800px){
+    .header-right-section{
+        width: 250px;
+    }
+}
+
+.user-name{
+    color: white;
+    padding: 6px;
+
+    border: 1px solid rgba(0, 0, 0, 0);
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-top: 3px;
+    cursor: pointer;
+    
+}
+.user-name:hover{
+    border: 1px solid white;
+    color: white;
+}
+.hello{
+    display: block;
+    font-size: 13px;
+}
+.name{
+    display: block;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+@media screen and (max-width:575px) {
+    .user-name{
+        display: none;
+    }
+    .header-right-section{
+        width: 180px;
+    }
 }
 .orders-link{
     color: white;
@@ -123,7 +164,6 @@ body{
     display: inline-block;
     padding: 6px;
     border: 1px solid rgba(0, 0, 0, 0);
-    
     align-items: center;
     margin-top: 3px;
     

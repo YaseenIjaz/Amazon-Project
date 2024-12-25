@@ -2,10 +2,14 @@ import { getProduct,products } from '../data/products.js';
 import { cart,updateCart } from '../data/cart-class.js';
 import { orders } from '../data/orders.js';
 import { getDeliveryOption } from '../data/deliveryOptions.js';
+import { loggedInUser } from '../data/userDetails.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import '../data/orders.js'
 
 updateCart();
+console.log(loggedInUser);
+
+
 
 function loadPage() {
   

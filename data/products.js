@@ -91,6 +91,23 @@ export const products = [
       sizeChartLink: "images/images/clothing-size-chart.png"
     },
     {
+      id: "30pe7vdc-64d2-4137-8860-1f5a963ey34b",
+      image: "images/images/products/boult-on-ear.jpg",
+      name: "Boult Newly Launched Q Over Ear Bluetooth Headphones with 70H Playtime, 40mm Bass Drivers, Zen™ ENC Mic, Type-C Fast Charging, 4 EQ Modes, Bluetooth 5.4, AUX Option, IPX5 Wireless Headphones (Black)",
+      rating: {
+        stars: 4,
+        count: 1093
+      },
+      price: 2099,
+      keywords: [
+        "headphone",
+        "bluetooth",
+        "on ear",
+        "boult"
+      ],
+      type: 'headphones'
+    },
+    {
       id: "54e0eccd-8f36-462b-b68a-8182611d9add",
       image: "images/images/products/black-2-slot-toaster.jpg",
       name: "2 Slot Toaster - Black",
@@ -172,19 +189,21 @@ export const products = [
       type: 'bathroom'
     },
     {
-      id: "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
-      image: "images/images/products/liquid-laundry-detergent-plain.jpg",
-      name: "Liquid Laundry Detergent, 110 Loads, 82.5 Fl Oz",
+      id: "3f0he8d6-9a15-4979-b459-585b0d0545b2",
+      image: "images/images/products/boult-tws.jpg",
+      name: "Boult Z60 Truly Wireless in Ear Earbuds with 60H Playtime, Zen™ ENC Mic, 50ms Low Latency, 13mm Bass Drivers, Type-C Fast Charging, Made in India, BT V5.3, Touch Control, IPX5 Ear Buds (Powder Blue)z",
       rating: {
-        stars: 4.5,
-        count: 305
+        stars: 4,
+        count: 5425
       },
-      price: 359,
+      price: 999,
       keywords: [
-        "bathroom",
-        "cleaning"
+        "headphone",
+        "boult",
+        "tws",
+        "bluetooth"
       ],
-      type: 'bathroom'
+      type: 'headphone'
     },
     {
       id: "58b4fc92-e98c-42aa-8c55-b6b79996769a",
@@ -404,6 +423,23 @@ export const products = [
       type: 'womens-fashion'
     },
     {
+      id: "r3w1bcc2-4e72-457c-93lc-9e13d79cc57f",
+      image: "images/images/products/room-scent.jpg",
+      name: "Soul & Scents Glass 120 Ml Lemongrass Reed Diffuser Set | Free 6 Fiber Reed Sticks |Toxin Free & Stress Relief | Fine-Living Natural Fragrance",
+      rating: {
+        stars: 4,
+        count: 1883
+      },
+      price: 580,
+      keywords: [
+        "diffuser",
+        "scent",
+        "fragrance",
+        "home"
+      ],
+      type: 'home'
+    },
+    {
       id: "8b5a2ee1-6055-422a-a666-b34ba28b76d4",
       image: "images/images/products/men-golf-polo-t-shirt-blue.jpg",
       name: "Men's Regular-Fit Quick-Dry Golf Polo Shirt",
@@ -509,6 +545,22 @@ export const products = [
       type: 'mens-fashion'
     },
     {
+      id: "1ct79479-p786-494f-ab53-219325432536",
+      image: "images/images/products/humidifier.jpg",
+      name: "Bear® 5L Humidifier",
+      rating: {
+        stars: 4,
+        count: 3556
+      },
+      price: 3199,
+      keywords: [
+        "humidifier",
+        "home",
+        "bear"
+      ],
+      type: 'home'
+    },
+    {
       id: "4df68c27-fd59-4a6a-bbd1-e754ddb6d53c",
       image: "images/images/products/men-navigator-sunglasses-brown.jpg",
       name: "Men's Navigator Sunglasses Pilot",
@@ -607,6 +659,23 @@ export const products = [
       type: 'kitchen'
     },
     {
+      id: "e3w1651a-d501-4p3t-aae6-a9659b0757a0",
+      image: "images/images/products/chess.jpg",
+      name: "BCBESTCHESS Wooden Handcrafted Foldable Magnetic Chess Board Set with Magnetic Pieces and Extra Queens for 2 Players Kids and Adults (10x10 Inches, Brown)",
+      rating: {
+        stars: 4,
+        count: 6421
+      },
+      price: 1199,
+      keywords: [
+        "chess",
+        "wooden",
+        "games"
+      ],
+      type: 'toys'
+    },
+    
+    {
       id: "0d7f9afa-2efe-4fd9-b0fd-ba5663e0a524",
       image: "images/images/products/coffeemaker-with-glass-carafe-black.jpg",
       name: "Coffeemaker with Glass Carafe and Reusable Filter - 25 Oz, Black",
@@ -671,6 +740,23 @@ export const products = [
       type: 'womens-fashion'
     },
     {
+      id: "1ued8504-57db-431c-b0a3-fc71a35c88b1",
+      image: "images/images/products/zebronics-on-ear.jpg",
+      name: "ZEBRONICS THUNDER Bluetooth 5.3 Wireless Headphones with 60H Backup, Gaming Mode, Dual Pairing, ENC, AUX, Micro SD, Voice assistant, Comfortable Earcups, Call Function(Black)",
+      rating: {
+        stars: 3.5,
+        count: 77835
+      },
+      price: 799,
+      keywords: [
+        "headphone",
+        "on ear",
+        "bluetooth",
+        "zebronics"
+      ],
+      type: 'headphones'
+    },
+    {
       id: "77a845b1-16ed-4eac-bdf9-5b591882113d",
       image: "images/images/products/countertop-blender-64-oz.jpg",
       name: "Countertop Blender - 64oz, 1400 Watts",
@@ -718,6 +804,23 @@ export const products = [
         "tissues"
       ],
       type: 'kitchen'
+    },
+    {
+      id: "48pi7e9-5323-405f-b7cf-57fde244a905",
+      image: "images/images/products/boult-neckband.jpg",
+      name: "Boult Audio FXCharge Bluetooth Earphones with 32H Playtime, Dual Pairing Neckband, Zen™ ENC Mic, Type-C Fast Charging (5Mins=7.5Hrs), Biggest 14.2mm Bass Driver IPX5 Premium Silicone Neck band (Black)",
+      rating: {
+        stars: 3.5,
+        count: 4521
+      },
+      price: 699,
+      keywords: [
+        "headphone",
+        "bluetooth",
+        "neckband",
+        "boult"
+      ],
+      type: 'headphones'
     },
     {
       id: "bc2847e9-5323-403f-b7cf-57fde044a955",
@@ -802,6 +905,23 @@ export const products = [
       type: 'toys'
     },
     {
+      id: "2ht887e9-5323-405z-07cf-57fde344a905",
+      image: "images/images/products/zebronics-neckband.jpg",
+      name: "ZEBRONICS Jumbo LITE with 70 Hours Backup, Bluetooth v5.2 Wireless In Ear Neckband, Fast Charging, ENC Calling, Gaming Mode (Upto 50ms), Voice Assistant, Dual Pairing, Splash Proof, and Type C (Black)",
+      rating: {
+        stars: 3.5,
+        count: 1103
+      },
+      price: 549,
+      keywords: [
+        "headphone",
+        "neckband",
+        "bluetooth",
+        "zebronics"
+      ],
+      type: 'headphones'
+    },
+    {
       id: "wr2867e9-7323-405z-07cr-57fde304a105",
       image: "images/images/products/handbag.jpg",
       name: "Synthetic Leather Women's Satchel Bag | Ladies Purse Handbag",
@@ -851,7 +971,7 @@ export const products = [
         "headphones",
         "headphone"
       ],
-      type: 'headphone'
+      type: 'headphones'
     },
     {
       id: "zc4207e9-5323-405v-03cf-57fde344p905",
@@ -913,7 +1033,7 @@ export const products = [
       keywords: [
         "toys",
         "lego",
-        "obuilding blocks",
+        "building blocks",
         "harry potter"
       ],
       type: 'toys'
@@ -934,7 +1054,23 @@ export const products = [
         "headphone"
       ],
       type: 'headphones'
-    }
+    },
+    {
+      id: "4r3887e9-5323-185z-07cf-57pie344a985",
+      image: "images/images/products/carrom.jpg",
+      name: "GSI Superior Matte Finish Large Carrom Board with Coins Striker and Boric Powder, Beige (Large 32 inch 4mm)",
+      rating: {
+        stars: 3.5,
+        count: 445
+      },
+      price: 1799,
+      keywords: [
+        "games",
+        "carrom",
+        "board"
+      ],
+      type: 'toys'
+    },
   ].map((productDetails) =>{
     return new Product(productDetails);
   });
@@ -1032,6 +1168,38 @@ export const groceries = [
     keywords: [
       "kelloggs",
       "breakfast",
+      "groceries"
+    ],
+    type: 'groceries'
+  },
+  {
+    id: "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
+    image: "images/images/products/liquid-laundry-detergent-plain.jpg",
+    name: "Liquid Laundry Detergent, 110 Loads, 82.5 Fl Oz",
+    rating: {
+      stars: 4.5,
+      count: 305
+    },
+    price: 359,
+    keywords: [
+      "bathroom",
+      "cleaning",
+      "groceries"
+    ],
+    type: 'groceries'
+  },
+  {
+    id: "x3re2bd7-3bfx-4dfb-a181-9354c9bj75y68",
+    image: "images/images/products/dal.jpg",
+    name: "Tata Sampann Unpolished Toor Dal/Arhar Dal, 1kg",
+    rating: {
+      stars: 4.5,
+      count: 31973
+    },
+    price: 204,
+    keywords: [
+      "dal",
+      "tata sampan",
       "groceries"
     ],
     type: 'groceries'

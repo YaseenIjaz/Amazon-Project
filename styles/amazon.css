@@ -1,5 +1,6 @@
 main{
   margin-top: 75px;
+  min-height: 1000px;
 }
 .product-grid{
   display: grid;

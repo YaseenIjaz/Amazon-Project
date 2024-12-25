@@ -1,4 +1,4 @@
-import { userDetails,getUser } from "../data/userDetails.js";
+import { userDetails,getUser} from "../data/userDetails.js";
 
 export let userInfo;
 
@@ -73,7 +73,10 @@ function login() {
 
     if (userInfo) {
         if (userInfo.password === password) {
-            window.location.href = "../carousel-page.html";
+
+            localStorage.setItem('logged-in-user', JSON.stringify(userInfo));
+            window.location.href = "../home.html";
+            
         } else {
             alert("Incorrect password. Please try again.");
         }
@@ -84,6 +87,5 @@ function login() {
 
 document.querySelector('.js-login').addEventListener('click', login);
 
-console.log(userDetails);
-console.log("Loaded userDetails:", JSON.parse(localStorage.getItem('user-details')));
+
 

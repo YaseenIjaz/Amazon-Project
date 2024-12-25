@@ -1,6 +1,7 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { calculateDeliveryDate,getDeliveryOption } from './deliveryOptions.js';
 import { cart } from './cart-class.js';
+import { loggedInUser } from './userDetails.js';
 import {deliveryOptions} from './deliveryOptions.js';
 
 
@@ -46,8 +47,8 @@ export class Orders {
     return dayjs().add(deliveryDays, 'days').toISOString();
 }
 }
-
-export const orders = JSON.parse(localStorage.getItem('orders')) || [];
+const loggedEmail = loggedInUser.email;
+export const orders = JSON.parse(localStorage.getItem(`orders-${loggedEmail}`)) || [];
 
 export function addOrder(order) {
   orders.unshift(order);
@@ -55,7 +56,7 @@ export function addOrder(order) {
 };
 
 function saveToStorage() {
-  localStorage.setItem('orders', JSON.stringify(orders));
+  localStorage.setItem(`orders-${loggedEmail}`, JSON.stringify(orders));
 };
 
 export function getOrder(orderId) {

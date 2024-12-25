@@ -75,7 +75,7 @@ function login() {
         if (userInfo.password === password) {
 
             localStorage.setItem('logged-in-user', JSON.stringify(userInfo));
-            window.location.href = "../home.html";
+            window.location.href = "https://yaseenijaz.github.io/Amazon-Project/home.html";
             
         } else {
             alert("Incorrect password. Please try again.");

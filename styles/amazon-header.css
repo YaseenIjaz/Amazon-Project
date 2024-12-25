@@ -110,44 +110,47 @@ body{
 }
 
 .header-right-section{
-    width: 340px;
+    width: 280px;
     display: flex;
     flex-shrink: 0;
     justify-content: end;
     margin-left: 12px; 
 
 }
-@media (max-width:800px){
-    .header-right-section{
-        width: 250px;
-    }
-}
 
-.user-name{
+
+.user-name {
     color: white;
     padding: 6px;
-
     border: 1px solid rgba(0, 0, 0, 0);
-    flex-wrap: nowrap;
-    align-items: center;
     margin-top: 3px;
-    cursor: pointer;
-    
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    max-width: 100px; 
 }
-.user-name:hover{
-    border: 1px solid white;
-    color: white;
+@media (max-width:800px){
+    .user-name{
+        max-width: 75px;
+    }
+    .header-right-section{
+        width: 245px;
+    }
+
 }
-.hello{
+.hello {
     display: block;
     font-size: 13px;
 }
-.name{
+
+.name {
     display: block;
-    white-space: nowrap;
     font-size: 15px;
     font-weight: bold;
+    white-space: nowrap; 
     overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; 
 }
 
 @media screen and (max-width:575px) {

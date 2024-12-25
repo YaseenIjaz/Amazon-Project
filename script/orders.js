@@ -7,9 +7,6 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import '../data/orders.js'
 
 updateCart();
-console.log(loggedInUser);
-
-
 
 function loadPage() {
   
@@ -90,8 +87,24 @@ function loadPage() {
 
     return productsListHTML;
   }
-
+  document.querySelector('.js-user-name').innerHTML = `<span class="hello">Hello,</span> <span class="name">${(loggedInUser.name.split(" ")[0])}</span>`;
   document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
+
+  document.querySelector('.js-search-button').addEventListener('click', () => {
+    const searchTerm = document.querySelector('.js-search-bar').value.trim();
+    if (searchTerm) {
+        window.location.href = `home.html?search=${encodeURIComponent(searchTerm)}`;
+    }
+});
+
+document.querySelector('.js-search-bar').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        const searchTerm = document.querySelector('.js-search-bar').value.trim();
+        if (searchTerm) {
+            window.location.href = `home.html?search=${encodeURIComponent(searchTerm)}`;
+        }
+    }
+});
 
   document.querySelectorAll('.js-buy-again').forEach((button) => {
     button.addEventListener('click', () => {

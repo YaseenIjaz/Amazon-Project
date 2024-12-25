@@ -5,6 +5,10 @@ import { mensFashion, womensFashion,toys,home,kitchen, headphones, groceriesPage
 
 updateCart();
 
+
+
+
+
 function displayAddedMsg(productId){
     const addedMsg = document.querySelector(`.js-added-to-cart-${productId}`);
     addedMsg.classList.add ('added-to-cart-visible');
@@ -86,6 +90,54 @@ export function renderProducts(products){
     })   
 }
 
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('search');
+
+    if (searchTerm) {
+        const mainElement = document.querySelector('main');
+        mainElement.innerHTML = '';
+        const filteredProducts = products.filter((product) => {
+            let matchingKeyword = false;
+
+            product.keywords.forEach((keyword) => {
+                if (keyword.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    matchingKeyword = true;
+                }
+            });
+
+            return (
+                matchingKeyword ||
+                product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+
+        const filteredGroceries = groceries.filter((grocery) => {
+            let matchingKeyword = false;
+
+            grocery.keywords.forEach((keyword) => {
+                if (keyword.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    matchingKeyword = true;
+                }
+            });
+
+            return (
+                matchingKeyword ||
+                grocery.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+
+        const results = filteredProducts.length > 0 ? filteredProducts : filteredGroceries;
+
+        handleButtonClick(() => renderProducts(results));
+    }
+});
+
+
 document.querySelector('.js-search-button').addEventListener('click', () => {
     const searchTerm = document.querySelector('.js-search-bar').value.trim();
     if (searchTerm) {
@@ -103,7 +155,26 @@ document.querySelector('.js-search-button').addEventListener('click', () => {
                 product.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
         });
-        handleButtonClick(() => renderProducts(filteredProducts));
+
+        const filteredGroceries = groceries.filter((grocery) => {
+            let matchingKeyword = false;
+
+            grocery.keywords.forEach((keyword) => {
+                if (keyword.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    matchingKeyword = true;
+                }
+            });
+
+            return (
+                matchingKeyword ||
+                grocery.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+
+        const results = filteredProducts.length > 0 ? filteredProducts : filteredGroceries;
+
+        handleButtonClick(() => renderProducts(results));
+         
     }
 });
 
@@ -126,7 +197,26 @@ document.querySelector('.js-search-bar').addEventListener('keydown', (event) => 
                     product.name.toLowerCase().includes(searchTerm.toLowerCase())
                 );
             });
-            handleButtonClick(() => renderProducts(filteredProducts));
+
+            const filteredGroceries = groceries.filter((grocery) => {
+                let matchingKeyword = false;
+
+                grocery.keywords.forEach((keyword) => {
+                    if (keyword.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        matchingKeyword = true;
+                    }
+                });
+
+                return (
+                    matchingKeyword ||
+                    grocery.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            });
+
+            const results = filteredProducts.length > 0 ? filteredProducts : filteredGroceries;
+
+            handleButtonClick(() => renderProducts(results));
+
         }
     }
 });
@@ -155,6 +245,7 @@ function handleButtonClick(callback) {
         callback();
     }
 }
+
 
 document.querySelector('.js-user-name').innerHTML = `<span class="hello">Hello,</span> <span class="name">${(loggedInUser.name.split(" ")[0])}</span>`;
 document.querySelector('.js-view-all-btn').addEventListener('click', () => handleButtonClick(() => renderProducts(products)));

@@ -77,3 +77,28 @@
         right: 30px;
       }
 }
+
+@media(max-width:450px){
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon{
+        height: 15px;
+        width: 15px;
+    }
+
+    .carousel-control-prev {
+        left: 20px;
+    }  
+    .carousel-control-next {
+        right: 20px;
+      }
+
+    .carousel-item img {
+        width: 200%;
+        height: auto;
+        object-position: -150px 0px; /* Centers the image content */
+    }
+
+
+
+}
+

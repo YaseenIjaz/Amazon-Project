@@ -1,11 +1,12 @@
 main{
     max-width: 1100px;
-    min-height: 400px;
-    margin-top: 70px;
+    min-height: 600px;
+    margin-top: 140px;
     margin-bottom: 100px;
     margin-left: auto;
     margin-right: auto;
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .checkout-grid{
@@ -29,39 +30,37 @@ main{
 
 }
 .items-orderd{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgb(213, 217, 217);
-    padding:20px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+
+    border: 1px solid rgb(222, 222, 222);
+    padding: 18px;
+    border-radius: 4px;
+    margin-bottom: 12px;
     
 }
 
 .order-delivery-date{
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 700;
     color: rgb(0, 118, 0);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     margin-top: 5px;
 }
 .ordered-detail-grid{
     display: grid;
-    grid-template-columns: 110px 1fr 1fr;
-    column-gap: 30px;
+    grid-template-columns: 100px 1fr 1fr;
+    column-gap: 25px;
 }
-.ordered-image-container{
-    display: flex;
-    justify-content: center;
-}
-.ordered-image-container img{
-    max-width: 110px;
-    max-height: 110px;
+.ordered-product-image{
+    max-width: 100%;
+    max-height: 120px;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .product-name{
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 .product-price{
     color: rgb(177, 39, 4);
@@ -69,14 +68,10 @@ main{
     margin-bottom: 5px;
 }
 .quantity-modification{
-    display: flex;
-    gap: 12px;
+    gap: 15px;
 }
 .modification{
-    display: flex;
-    gap: 8px;
-    color:rgb(1, 124, 182) ;
-    cursor: pointer;
+    gap: 5px;
 }
 
 .delivery-details{
@@ -100,10 +95,12 @@ main{
 .delivery-option-input {
     transform: scale(1.3);
     cursor: pointer;
+    margin-left: 0;
 }
 .deliverty-date-options{
     color: rgb(0, 118, 0);
     font-weight: 700;
+    margin-bottom: 3px;
 }
 .delivery-amount{
     color: rgb(120, 120, 120);
@@ -112,11 +109,10 @@ main{
 
 
 .payment-summary{
-    border: 1px solid rgb(213, 217, 217);
+    border: 1px solid rgb(222, 222, 222);
     padding: 18px ;
-    border-radius: 5px;
-    font-size: 15px;
-    margin-bottom: 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
     
 }
 .summary-title{
@@ -133,7 +129,8 @@ main{
 .payment-mode{
     display: grid;
     grid-template-columns: 1fr auto;
-    margin-bottom: 10px;
+    font-size: 15px;
+    margin-bottom: 9px;
 }
 
 .items-total,
@@ -153,15 +150,18 @@ main{
     font-size: 18px;
     font-weight: 600;
     color: rgb(177, 39, 4);
-    padding-top: 20px;
+    padding-top: 18px;
     border-top: 1px solid rgb(222, 222, 222);
 }
 .place-order
 {
     width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    height: 38px; 
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 8px;
+    margin-top: 11px;
+    margin-bottom: 15px;
+   
 }
 
 .place-order:disabled{
@@ -170,7 +170,6 @@ main{
 
 .gpay-button-container button{
     width: 100%;
-    height: 42px;
     margin-bottom: 15px;
 }
 
@@ -197,7 +196,7 @@ main{
 }
 
 
-@media(max-width:999px){
+@media(max-width:1000px){
     main{
         max-width: 500px;
     }
@@ -207,12 +206,12 @@ main{
       placed in is determined by the order of the elements in
       the HTML. grid-row overrides this default ordering). */
         grid-row: 1;
+        margin-bottom: 12px;
         
     }
     
     .checkout-grid{
         grid-template-columns: 1fr;
-        row-gap: 15px;
         
     }
 
@@ -237,5 +236,13 @@ main{
     }
 
     
+}
+
+@media (max-width:360px){
+    .payment-mode{
+        grid-template-columns:1fr;
+        row-gap: 15px;
+        
+    }
 }
 

@@ -86,11 +86,14 @@ body{
     text-indent: 15px;
     font-size: 15px;
     width: 0;
+    transition: width 0.3s ease;
 }
 
 .search-bar:focus{
     outline: none;
 }
+
+
 
 
 .search-button{
@@ -107,6 +110,13 @@ body{
     width: 22px;
     margin-top: 3px;
     margin-left: 2px;
+}
+
+@media(max-width:340px){
+    .search-bar{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .header-right-section{

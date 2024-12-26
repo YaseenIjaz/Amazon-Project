@@ -23,11 +23,7 @@ function updateCart() {
 updateCart()
 
 function renderOrderSummary() {
-  let checkOutHTML = '';
-
-  console.log(cart); // Debugging: Check cart structure
-
-  // Check if the cart is empty
+  let checkOutHTML = '';  
   if (!cart.cartItems || cart.cartItems.length === 0) {
     checkOutHTML += 
     `
@@ -37,7 +33,7 @@ function renderOrderSummary() {
     </a>
     `;
   } else {
-    // Iterate through cart items and render them
+   
     cart.cartItems.forEach((cartItem) => {
       const productId = cartItem.productId;
       const matchingProduct = getProduct(productId);
@@ -52,28 +48,28 @@ function renderOrderSummary() {
           Delivery date: <span class="deliverty-date">${dateString}</span> 
         </div>
         <div class="ordered-detail-grid">
-          <div class="ordered-image-container">
-            <img src="${matchingProduct.image}" alt="product">
-          </div>
+          
+          <img class="ordered-product-image" src="${matchingProduct.image}" alt="product">
+          
           <div class="ordered-details">
-            <div class="product-details">
-              <div class="product-name">${matchingProduct.name}</div>
-              <div class="product-price">₹${matchingProduct.price}</div>
-            </div>
+            
+            <div class="product-name">${matchingProduct.name}</div>
+            <div class="product-price">₹${matchingProduct.price}</div>
+            
             <div class="quantity-modification">
-              <div>
+              <span>
                 Quantity: <span class="quantity js-quantity-${matchingProduct.id}">${Number(cartItem.quantity)}</span>
-              </div>
-              <div class="modification">
-                <div class="update link-primary js-update-button" data-update-id=${matchingProduct.id}>
+              </span>
+              <span class="modification link-primary">
+                <span class="update js-update-button" data-update-id=${matchingProduct.id}>
                   Update
-                </div>
+                </span>
                 <input type="number" class="quantity-input js-quantity-input-${matchingProduct.id}">
                 <span class="save-quantity link-primary" data-save-id=${matchingProduct.id}>Save</span>
-                <div class="delete link-primary js-delete-button" data-delete-id=${matchingProduct.id}>
+                <span class="delete link-primary js-delete-button" data-delete-id=${matchingProduct.id}>
                   Delete
-                </div>
-              </div>
+                </span>
+              </span>
             </div>
           </div>
           <div class="delivery-options">

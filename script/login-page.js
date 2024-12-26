@@ -1,4 +1,6 @@
 import { userDetails,getUser} from "../data/userDetails.js";
+console.log(userDetails);
+
 
 export let userInfo;
 
@@ -44,6 +46,15 @@ function createAccount() {
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
 
+  
+    const existingUser = userDetails.find(user => user.email === email);
+
+    if (existingUser) {
+        alert("Account already registered. Please log in.");
+        showLogin();
+        return;
+    }
+
     if (!validatePasswords()) return;
 
     if (name && email && password) {
@@ -59,6 +70,7 @@ function createAccount() {
         alert("Please fill out all fields.");
     }
 }
+
 document.querySelector('.js-create-account').addEventListener('click', createAccount);
 
 
@@ -67,22 +79,24 @@ function login() {
     const password = document.getElementById('login-password').value;
     if(email ==='' || password ===''){
         alert('Please fill out all fields.')
-    }
+    }else{
+        userInfo = getUser(email);
 
-    userInfo = getUser(email);
-
-    if (userInfo) {
-        if (userInfo.password === password) {
-
-            localStorage.setItem('logged-in-user', JSON.stringify(userInfo));
-            window.location.href = "../home.html";
-            
-        } else {
-            alert("Incorrect password. Please try again.");
+        if (userInfo) {
+            if (userInfo.password === password) {
+    
+                localStorage.setItem('logged-in-user', JSON.stringify(userInfo));
+                window.location.href = "../home.html";
+                
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        } else{
+            alert("User data not found. Sign in if you're a new customer.");
         }
-    } else{
-        alert("User data not found. Sign in if you're a new customer.");
     }
+
+
 }
 
 document.querySelector('.js-login').addEventListener('click', login);

@@ -14,11 +14,20 @@
   height: 20px;
   flex-grow: 1;
   flex-shrink: 1;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none; 
 }
+
+.navigation-bar::-webkit-scrollbar {
+  display: none;
+}
+
+ 
 
 .navigation-bar-categories {
   display: flex;
-  gap: 10px;
+  margin-left: 10px;
   width: 100%;
 }
 

@@ -6,6 +6,17 @@ import { mensFashion, womensFashion,toys,home,kitchen, headphones, groceriesPage
 updateCart();
 
 
+const searchButton = document.querySelector('.js-search-button');
+const searchBar = document.querySelector('.js-search-bar');
+
+searchButton.addEventListener('focus', () => {
+  searchBar.style.width = '100px';
+});
+
+searchButton.addEventListener('blur', () => {
+  searchBar.style.width = '0px';
+
+});
 
 
 

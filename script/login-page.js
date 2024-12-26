@@ -94,7 +94,7 @@ function login() {
     } else{
         alert("User data not found. Sign in if you're a new customer.");
     }
-}
+}}
 
 document.querySelector('.js-login').addEventListener('click', login);
 

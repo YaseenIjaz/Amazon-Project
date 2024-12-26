@@ -11,41 +11,43 @@
 
     
     <link rel="stylesheet" href="styles/general.css">
-    
+    <link rel="stylesheet" href="styles/amazon-header.css">
     <link rel="stylesheet" href="styles/tracking.css">
   </head>
   <body>
-    <div class="amazon-header">
-      <div class="amazon-header-left-section">
-        <a href="home.html" class="header-link">
-          <img class="amazon-logo"
-            src="images/images/amazon-logo-white.png">
-          <img class="amazon-mobile-logo"
-            src="images/images/amazon-mobile-logo-white.png">
-        </a>
+    <div class="header">
+      <div class="header-left-section">
+          <a href="home.html" class="header-link">
+              <img src="images/images/amazon-logo-white.png" alt="amazon" class="amazon-logo">
+
+              <img src="images/images/amazon-mobile-logo-white.png" alt="" class="amazon-mobile-logo">
+          </a>
+      </div>
+      
+      <div class="header-middle-section" tabindex="0">
+          <input type="text" class="search-bar js-search-bar" placeholder="Search">
+          <button type="button" class="search-button  js-search-button">
+              <img src="images/images/icons/search-icon.png" alt="search">
+          </button>
       </div>
 
-      <div class="amazon-header-middle-section">
-        <input class="search-bar" type="text" placeholder="Search">
-
-        <button class="search-button">
-          <img class="search-icon" src="images/images/icons/search-icon.png">
-        </button>
+      <div class="header-right-section">
+          <span class="user-name js-user-name"></span>
+          
+          <a href="orders.html" class="orders-link">
+              <span class="returns-text">Returns</span>
+              <span class="orders-text">& Orders</span>
+          </a>
+          
+          
+          <a href="checkout.html" class="cart-links">
+              <img src="images/images/icons/cart-icon.png" alt="cart" class="cart-icon">
+              <div class="cart-quantity js-cart-quantity"></div>
+              <div class="cart-text">Cart</div>
+          </a>
+          
       </div>
-
-      <div class="amazon-header-right-section">
-        <a class="orders-link header-link" href="orders.html">
-          <span class="returns-text">Returns</span>
-          <span class="orders-text">& Orders</span>
-        </a>
-
-        <a class="cart-link header-link" href="checkout.html">
-          <img class="cart-icon" src="images/images/icons/cart-icon.png">
-          <div class="cart-quantity">3</div>
-          <div class="cart-text">Cart</div>
-        </a>
-      </div>
-    </div>
+  </div>
 
     <div class="main">
       <div class="order-tracking js-order-tracking">

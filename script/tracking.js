@@ -1,7 +1,10 @@
 import {getOrder} from '../data/orders.js';
 import {getProduct, products} from '../data/products.js';
+import { updateCart } from '../data/cart-class.js';
+import { loggedInUser } from '../data/userDetails.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
+updateCart();
 function loadPage() {
 
 
@@ -73,5 +76,47 @@ console.log('Percent Progress:', percentProgress);
 console.log(dayjs(productDetails.estimatedDelivery).format('MMMM D'));
 
 }
+
+
+const searchButton = document.querySelector('.js-search-button');
+const searchBar = document.querySelector('.js-search-bar');
+
+function expandSearchBar() {
+  searchBar.style.width = '100px';
+}
+
+
+function collapseSearchBar() {
+
+  setTimeout(() => {
+    if (!searchButton.matches(':focus') && !searchBar.matches(':focus')) {
+      searchBar.style.width = '0px';
+    }
+  }, 100);
+}
+
+searchButton.addEventListener('focus', expandSearchBar);
+searchBar.addEventListener('focus', expandSearchBar);
+
+searchButton.addEventListener('blur', collapseSearchBar);
+searchBar.addEventListener('blur', collapseSearchBar);
+
+document.querySelector('.js-user-name').innerHTML = `<span class="hello">Hello,</span> <span class="name">${(loggedInUser.name.split(" ")[0])}</span>`;
+
+document.querySelector('.js-search-button').addEventListener('click', () => {
+  const searchTerm = document.querySelector('.js-search-bar').value.trim();
+  if (searchTerm) {
+      window.location.href = `home.html?search=${encodeURIComponent(searchTerm)}`;
+  }
+});
+
+document.querySelector('.js-search-bar').addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+      const searchTerm = document.querySelector('.js-search-bar').value.trim();
+      if (searchTerm) {
+          window.location.href = `home.html?search=${encodeURIComponent(searchTerm)}`;
+      }
+  }
+});
 
 loadPage();

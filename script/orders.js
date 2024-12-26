@@ -8,6 +8,7 @@ import '../data/orders.js'
 
 updateCart();
 
+
 function loadPage() {
   
 
@@ -119,6 +120,29 @@ document.querySelector('.js-search-bar').addEventListener('keydown', (event) => 
       }, 1000);
     });
   });
+
+  const searchButton = document.querySelector('.js-search-button');
+const searchBar = document.querySelector('.js-search-bar');
+
+function expandSearchBar() {
+  searchBar.style.width = '100px';
+}
+
+
+function collapseSearchBar() {
+
+  setTimeout(() => {
+    if (!searchButton.matches(':focus') && !searchBar.matches(':focus')) {
+      searchBar.style.width = '0px';
+    }
+  }, 100);
+}
+
+searchButton.addEventListener('focus', expandSearchBar);
+searchBar.addEventListener('focus', expandSearchBar);
+
+searchButton.addEventListener('blur', collapseSearchBar);
+searchBar.addEventListener('blur', collapseSearchBar);
 };
 loadPage()
 

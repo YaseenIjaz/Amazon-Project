@@ -14,7 +14,7 @@
   height: 20px;
   flex-grow: 1;
   flex-shrink: 1;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none; 
 }
@@ -24,10 +24,14 @@
 }
 
  
-
+.navigation-outer{
+  margin-right: 20px;
+  margin-right: 20px;
+  
+}
 .navigation-bar-categories {
   display: flex;
-  margin-left: 10px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -65,7 +69,6 @@
 }
 @media (max-width: 775px) {
   .navigation-bar {
-      
       padding: 10px; 
   }
 

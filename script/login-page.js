@@ -82,21 +82,18 @@ function login() {
     }else{
         userInfo = getUser(email);
 
-        if (userInfo) {
-            if (userInfo.password === password) {
-    
-                localStorage.setItem('logged-in-user', JSON.stringify(userInfo));
-                window.location.href = "../home.html";
-                
-            } else {
-                alert("Incorrect password. Please try again.");
-            }
-        } else{
-            alert("User data not found. Sign in if you're a new customer.");
+    if (userInfo) {
+        if (userInfo.password === password) {
+
+            localStorage.setItem('logged-in-user', JSON.stringify(userInfo));
+            window.location.href = "https://yaseenijaz.github.io/Amazon-Project/home.html";
+            
+        } else {
+            alert("Incorrect password. Please try again.");
         }
+    } else{
+        alert("User data not found. Sign in if you're a new customer.");
     }
-
-
 }
 
 document.querySelector('.js-login').addEventListener('click', login);
